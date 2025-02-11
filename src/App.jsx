@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+import Home from "./pages/Home/Home";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import "./App.scss";
 
 function App() {
   const [authorised, setAuthorised] = useState(false);
@@ -12,7 +12,7 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/" element={<Home />} />
         </Routes>
       </Router>
