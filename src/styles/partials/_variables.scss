@@ -1,0 +1,23 @@
+@use "./typography" as *;
+
+// spacing
+$padding-default: 1rem;
+
+// borders
+$border-radius-default: 0.5rem;
+
+// colors
+$primary-white: #fafafa;
+$primary-black: #333333;
+
+// icons&images
+$icon-size: 36px;
+$login-form-background: 200px;
+
+//typography
+$logo-font-size: 64px;
+$logo-font-size-navbar: 36px;
+$logo-font-family: "Qwigley", "Titillium Web";
+$logo-font-weight: 600;
+$logo-line-height: 64px;
+$logo-line-height-navbar: 36px;
