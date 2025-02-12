@@ -67,4 +67,20 @@
 
 .btn-dark {
   width: 70%;
+  margin: $padding-default;
+}
+
+.input-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $padding-default/2;
+  width: 100%;
+  &__icon {
+    width: $icon-size/2;
+    height: $icon-size/2;
+  }
+  p {
+    margin-bottom: 0;
+  }
 }
