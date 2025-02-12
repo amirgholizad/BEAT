@@ -1,8 +1,9 @@
+import { Link } from "react-router-dom";
 import Login from "../../components/Login/Login";
-function LoginPage() {
+function LoginPage({ path }) {
   return (
     <div>
-      <Login path="login" />
+      <Login path={path} />
     </div>
   );
 }
