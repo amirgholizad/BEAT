@@ -179,7 +179,7 @@ function Login({ path }) {
             <img src={userIcon} alt="user icon" />
             <input
               name="email"
-              type="email"
+              type="text"
               value={formData.email}
               className={
                 inputInvalid.email
@@ -188,7 +188,9 @@ function Login({ path }) {
               }
               id="email"
               aria-describedby="emailHelp"
-              placeholder="Enter email"
+              placeholder={
+                inputInvalid.email ? validationMessages.email : "Enter email"
+              }
               onChange={handleChange}
             />
           </div>
@@ -212,7 +214,11 @@ function Login({ path }) {
                   : "" + " form-control login-form-control"
               }
               id="password"
-              placeholder="Password"
+              placeholder={
+                inputInvalid.password
+                  ? validationMessages.password
+                  : "Enter password"
+              }
               onChange={handleChange}
             />
           </div>
