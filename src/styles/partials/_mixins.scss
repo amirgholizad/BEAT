@@ -1,0 +1,69 @@
+@use "./variables" as *;
+
+@mixin tablet {
+  @media screen and (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}
+
+@mixin p1 {
+  font-size: $p-font-large;
+  line-height: $p-large-line-height;
+  @include tablet {
+    font-size: $p-font-large-td;
+    line-height: $p-large-line-height-td;
+  }
+}
+
+@mixin p2 {
+  font-size: $p-font-medium;
+  line-height: $p-medium-line-height;
+  @include tablet {
+    font-size: $p-font-medium-td;
+    line-height: $p-medium-line-height-td;
+  }
+}
+
+@mixin p3 {
+  font-size: $p-font-small;
+  line-height: $p-small-line-height;
+  @include tablet {
+    font-size: $p-font-small-td;
+    line-height: $p-small-line-height-td;
+  }
+}
+
+@mixin form {
+  height: 2.25rem;
+  width: 25vw;
+  min-width: $mobile-breakpoint * 0.7;
+  max-width: 100%;
+  border-radius: $border-radius-default;
+  padding: $gap-default $padding-cta-left-right;
+  border: $divider;
+  @include tablet {
+    height: 2.375rem;
+  }
+
+  &:focus-within {
+    border: 0.0625rem solid $secondary-slate;
+  }
+
+  &.input--invalid {
+    border: 0.0625rem solid $secondary-red;
+  }
+}
+
+@mixin button {
+  border: none;
+  background-color: $primary-black;
+  color: $primary-white;
+  text-align: center;
+  width: 50%;
+}

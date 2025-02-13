@@ -1,0 +1,83 @@
+@use "./typography" as *;
+
+// -----------------------
+
+$tablet-breakpoint: 48rem;
+$desktop-breakpoint: 80rem;
+$mobile-breakpoint: 20rem;
+
+// colors
+$primary-white: #fafafa;
+$primary-black: #333333;
+$secondary-slate: #5c667e;
+$secondary-cloud: #bdc5d5;
+$bg-graphite: #232940;
+$bg-grey: #f7f8f9;
+$secondary-green: #158463;
+$secondary-red: #c94515;
+
+//typography
+$logo-font-size: 64px;
+$logo-font-size-navbar: 36px;
+$logo-font-family: "Kolker", "Titillium Web";
+$logo-font-weight: 600;
+$logo-line-height: 64px;
+$font-base: "Titillium Web", serif;
+$font-weight-default: 400;
+$font-weight-semibold: 600;
+
+$h1-font-size: 1.75rem;
+$h1-line-height: 2.25rem;
+
+$h2-font-size: 1.25rem;
+$h2-line-height: 1.75rem;
+
+$h3-font-size: 0.8125rem;
+$h3-line-height: 1.25rem;
+
+$h4-font-size: 0.6875rem;
+$h4-line-height: 1rem;
+
+$p-font-large: 0.9375rem;
+$p-large-line-height: 1.625rem;
+
+$p-font-medium: 0.8125rem;
+$p-medium-line-height: 1.25rem;
+
+$p-font-small: 0.6875rem;
+$p-small-line-height: 1rem;
+
+$h1-font-size-td: 2rem;
+$h1-line-height-td: 2.5rem;
+
+$h2-font-size-td: 1.5rem;
+$h2-line-height-td: 2rem;
+
+$h3-font-size-td: 0.875rem;
+$h3-line-height-td: 1.375rem;
+
+$h4-font-size-td: 0.75rem;
+$h4-line-height-td: 1.125rem;
+
+$p-font-large-td: 1rem;
+$p-large-line-height-td: 1.75rem;
+
+$p-font-medium-td: 0.875rem;
+$p-medium-line-height-td: 1.375rem;
+
+$p-font-small-td: 0.75rem;
+$p-small-line-height-td: 1.125rem;
+
+// spacing
+$padding-default: 1rem;
+$gap-default: 0.25rem;
+$padding-margin-default: 0.5rem;
+$padding-cta-left-right: 1rem;
+
+$border-radius-default: 1.25rem;
+$cta-height-mobile: 2.25rem;
+$cta-height-td: 2.375rem;
+$icon-size: 36px;
+$login-form-background: 200px;
+
+$divider: 0.0625rem solid $secondary-cloud;
