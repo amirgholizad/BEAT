@@ -1,13 +1,20 @@
 @font-face {
   font-family: "Titillium Web";
-  src: url("../../assets/fonts/TitilliumWeb-Bold.ttf") format("truetype");
+  src: url("../../assets/fonts/TitilliumWeb-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Titillium Web";
+  src: url("../../assets/fonts/TitilliumWeb-SemiBold.ttf") format("truetype");
   font-weight: 600;
   font-style: bold;
 }
 
 @font-face {
-  font-family: "Qwigley";
-  src: url("../../assets/fonts/Qwigley-Regular.ttf") format("truetype");
+  font-family: "Kolker";
+  src: url("../../assets/fonts/KolkerBrush-Regular.ttf") format("truetype");
   font-weight: 600;
   font-style: normal;
 }

@@ -1,3 +1,91 @@
+@use "./variables" as *;
+@use "./mixins" as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: $bg-grey;
+  font-family: $font-base;
+  color: $primary-black;
+}
+
+input,
+textarea {
+  font-family: $font-base;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  width: 100%;
+  padding: 0 $padding-cta-left-right;
+  font-size: $h3-font-size;
+  font-weight: $font-weight-default;
+  height: $cta-height-mobile;
+  border-radius: $border-radius-default;
+  font-family: $font-base;
+  border: none;
+  background: transparent;
+  color: inherit;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  cursor: pointer;
+  @include tablet {
+    width: auto;
+    font-size: $h3-font-size-td;
+    height: $cta-height-td;
+  }
+}
+
+h1 {
+  font-size: $h1-font-size;
+  line-height: $h1-line-height;
+  @include tablet {
+    font-size: $h1-font-size-td;
+    line-height: $h1-line-height-td;
+  }
+}
+
+h2 {
+  font-size: $h2-font-size;
+  line-height: $h2-line-height;
+  @include tablet {
+    font-size: $h2-font-size-td;
+    line-height: $h2-line-height-td;
+  }
+}
+
+h3 {
+  font-size: $h3-font-size;
+  line-height: $h3-line-height;
+  @include tablet {
+    font-size: $h3-font-size-td;
+    line-height: $h3-line-height-td;
+  }
+}
+
+h4 {
+  font-size: $h4-font-size;
+  line-height: $h4-line-height;
+  @include tablet {
+    font-size: $h4-font-size-td;
+    line-height: $h4-line-height-td;
+  }
+}
+
 label {
   color: white;
 }

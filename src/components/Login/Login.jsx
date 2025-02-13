@@ -1,7 +1,8 @@
 import "./Login.scss";
 import "../../styles/partials/_global.scss";
+import Input from "../Input/Input";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import CryptoJS from "crypto-js";
 import userIcon from "../../assets/icons/svg/user.svg";
@@ -14,6 +15,7 @@ const SECRET_KEY = import.meta.env.VITE_SECRET_KEY;
 function Login({ path }) {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
+  const [alluserData, setAllUserData] = useState([]);
   const [password, setPassword] = useState("");
   const [formData, setFormData] = useState({
     email: "",
@@ -47,6 +49,19 @@ function Login({ path }) {
     });
   };
 
+  async function getUserTable() {
+    try {
+      const response = await axios.get(`${BASE_URL}/user`);
+      setAllUserData(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    getUserTable();
+  }, [BASE_URL]);
+
   const validateForm = () => {
     let isValid = true;
     const newInputInvalid = {
@@ -63,24 +78,26 @@ function Login({ path }) {
       newInputInvalid.email = true;
       newValidationMessages.email = "Email is required";
       isValid = false;
+    } else if (!formData.email.includes("@") || !formData.email.includes(".")) {
+      newInputInvalid.email = true;
+      newValidationMessages.email = "Invalid email";
+      isValid = false;
+    } else if (
+      alluserData.find((user) => user.email === formData.email) &&
+      path === "signup"
+    ) {
+      newInputInvalid.email = true;
+      newValidationMessages.email = "Email already exists";
+      isValid = false;
     }
 
     if (!formData.password) {
       newInputInvalid.password = true;
       newValidationMessages.password = "Password is required";
       isValid = false;
-    }
-
-    if (!formData.email.includes("@") || !formData.email.includes(".")) {
-      newInputInvalid.email = true;
-      newValidationMessages.quantity = "Emial is not valid";
-      isValid = false;
-    }
-
-    if (formData.password.length < 8) {
+    } else if (formData.password.length < 8) {
       newInputInvalid.password = true;
-      newValidationMessages.warehouse_name =
-        "Password must be at least 8 characters";
+      newValidationMessages.password = "Password must be at least 8 characters";
       isValid = false;
     }
 
@@ -89,22 +106,18 @@ function Login({ path }) {
     return isValid;
   };
 
-  const handleFormSubmit = async (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
+    setEmail(formData.email);
+    setPassword(CryptoJS.AES.encrypt(formData.password, SECRET_KEY).toString());
     if (validateForm()) {
       try {
-        setEmail(formData.email);
-        setPassword(
-          CryptoJS.AES.encrypt(formData.password, SECRET_KEY).toString()
-        );
         console.log(email, password);
         const response = await axios.post(`${BASE_URL}/${path}`, {
           email: email,
           password: password,
         });
         if (response.status === 200) {
-          const token = CryptoJS.SHA256(response.status).toString();
-          localStorage.setItem("token", token);
           setShowSuccess(true);
           setTimeout(() => {
             setShowSuccess(false);
@@ -113,6 +126,7 @@ function Login({ path }) {
             email: "",
             password: "",
           });
+          navigate("/login");
         }
       } catch (error) {
         console.error(error);
@@ -127,43 +141,34 @@ function Login({ path }) {
     </div>
   );
 
-  //   const loginHandler = async (e) => {
-  //     e.preventDefault();
-  //     try {
-  //       const response = await axios.post(`${BASE_URL}/login`, {
-  //         email: e.target.email.value,
-  //         password: e.target.password,
-  //       });
-  //       if (response.status === 200) {
-  //         const token = CryptoJS.AES.encrypt(
-  //           response.status,
-  //           SECRET_KEY
-  //         ).toString();
-  //         localStorage.setItem("token", token);
-  //         navigate("/");
-  //       }
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setEmail(formData.email);
+    setPassword(formData.password);
+    if (validateForm()) {
+      try {
+        const response = await axios.post(`${BASE_URL}/login`, {
+          email: email,
+          password: password,
+        });
+        if (response.status === 200) {
+          localStorage.setItem("token", response.data.token);
+          setShowSuccess(true);
+          setTimeout(() => {
+            setShowSuccess(false);
+          }, 3000);
+          setFormData({
+            email: "",
+            password: "",
+          });
+          navigate("/");
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  };
 
-  //   const signupHandler = async (e) => {
-  //     e.preventDefault();
-  //     console.log(e.target.email);
-  //     setUserData({
-  //       email: e.target.email,
-  //       password: CryptoJS.AES.encrypt(e.target.password, SECRET_KEY).toString(),
-  //     });
-  //     console.log(userData);
-  //     try {
-  //       const response = await axios.post(`${BASE_URL}/signup`);
-  //       if (response.status === 200) {
-  //         navigate("/login");
-  //       }
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
   return (
     <main className="login">
       <section className="login-form-container">
@@ -173,22 +178,18 @@ function Login({ path }) {
         <form
           className="login-form"
           action="submit"
-          onSubmit={handleFormSubmit}
+          onSubmit={path === "login" ? handleLogin : handleSignup}
         >
           <div className="form-group login-form-group">
             <img src={userIcon} alt="user icon" />
-            <input
+            <Input
               name="email"
               type="text"
               value={formData.email}
-              className={
-                inputInvalid.email
-                  ? "input--invalid"
-                  : "" + " form-control login-form-control"
-              }
+              className={inputInvalid.email ? "input--invalid" : ""}
               id="email"
               aria-describedby="emailHelp"
-              placeholder={
+              placeholderText={
                 inputInvalid.email ? validationMessages.email : "Enter email"
               }
               onChange={handleChange}
@@ -204,17 +205,13 @@ function Login({ path }) {
           </div>
           <div className="form-group login-form-group">
             <img src={passwordIcon} alt="password icon" />
-            <input
+            <Input
               name="password"
               type="password"
               value={formData.password}
-              className={
-                inputInvalid.password
-                  ? "input--invalid"
-                  : "" + " form-control login-form-control"
-              }
+              className={inputInvalid.password ? "input--invalid" : ""}
               id="password"
-              placeholder={
+              placeholderText={
                 inputInvalid.password
                   ? validationMessages.password
                   : "Enter password"
@@ -227,11 +224,11 @@ function Login({ path }) {
           )}
 
           {path === "login" ? (
-            <button type="submit" className="btn btn-dark login-button">
+            <button type="submit" className="login-button">
               Login
             </button>
           ) : (
-            <button type="submit" className="btn btn-dark login-button">
+            <button type="submit" className="login-button">
               Sign Up
             </button>
           )}

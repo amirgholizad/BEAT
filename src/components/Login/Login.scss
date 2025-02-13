@@ -1,5 +1,6 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/global" as *;
+@use "../../styles/partials/mixins" as *;
 
 .login {
   display: flex;
@@ -13,7 +14,19 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: $padding-default * 1.5;
+    width: 100%;
+    padding: $padding-default * 1.5 0;
+    &-container {
+      border-radius: $border-radius-default;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: $primary-white;
+      padding: $padding-default/2;
+      width: 35vw;
+      min-width: $mobile-breakpoint;
+    }
     &-logo {
       display: flex;
       flex-direction: column;
@@ -23,6 +36,7 @@
       background-size: cover;
       width: 100%;
       height: $login-form-background;
+      border-radius: $border-radius-default;
       h1 {
         color: $primary-white;
         text-align: center;
@@ -35,20 +49,12 @@
     &-background {
       border-radius: $border-radius-default;
     }
-    &-container {
-      border-radius: $border-radius-default;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background-color: $primary-white;
-      padding: $padding-default/2;
-    }
+
     &-group {
       display: flex;
       flex-direction: row;
       justify-content: center;
-      align-items: center;
+      align-items: flex-end;
       gap: $padding-default/2;
       margin: $padding-default/2 auto;
       width: 100%;
@@ -57,15 +63,11 @@
         height: $icon-size;
       }
     }
-    input:focus {
-      border-color: $primary-black;
-      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px $primary-black;
-      outline: 0 none;
-    }
   }
 }
 
-.btn-dark {
+.login-button {
+  @include button;
   width: 70%;
   margin: $padding-default;
 }
@@ -91,4 +93,8 @@
   border-color: red;
   box-shadow: none;
   outline: 0 none;
+}
+
+.text-light {
+  color: $primary-white;
 }
