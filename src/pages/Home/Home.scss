@@ -1,0 +1,109 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/mixins" as *;
+
+.home-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-banner {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 30vh;
+  background-image: url("../../assets/images/background-home-banner.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 70vh;
+  padding: $padding-default $padding-default * 2;
+  &__title {
+    color: $primary-white;
+    font-family: $font-base;
+    font-size: 2.5rem;
+    font-weight: $font-weight-semibold;
+    margin-bottom: $padding-default;
+
+    span {
+      font-family: $logo-font-family;
+      font-size: $logo-font-size;
+    }
+  }
+  &__intro {
+    color: $primary-white;
+    font-family: $font-base;
+    font-size: 1.5rem;
+    font-weight: $font-weight-semibold;
+
+    margin-bottom: $padding-default * 2;
+  }
+}
+
+.home-about {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: $padding-default * 4 $padding-default * 8;
+  background-color: $primary-white;
+
+  &__content {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: $gap-default * 4;
+    &__title {
+      color: $primary-black;
+      font-family: $font-base;
+      font-size: 2.5rem;
+      font-weight: $font-weight-semibold;
+      margin-bottom: $padding-default;
+    }
+
+    &__description {
+      color: $primary-black;
+      font-family: $font-base;
+      font-size: $p-font-large;
+      font-weight: $font-weight-default;
+      line-height: $p-large-line-height;
+      text-align: left;
+      span {
+        color: $primary-red;
+      }
+      @include tablet {
+        font-size: $p-font-large-td;
+        line-height: $p-large-line-height-td;
+      }
+      @include desktop {
+        font-size: $p-font-large-td;
+        line-height: $p-large-line-height-td;
+      }
+    }
+  }
+  &__image {
+    width: 40%;
+  }
+}
+
+.sub-footer {
+  &__creators {
+    margin: auto;
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    &__img {
+      width: 10vh;
+      height: 10vh;
+      border-radius: 50%;
+      opacity: 100%;
+      &:hover {
+        opacity: 70%;
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "interactive-chart",
+    "title": "Interactive Chart",
+    "description": "An interactive chart for monitoring financial assests."
+  },
+  {
+    "id": 2,
+    "name": "portfolio",
+    "title": "Portfolio",
+    "description": "Create, edit, and monitor your financial assests."
+  },
+  {
+    "id": 3,
+    "name": "indicator-marketplace",
+    "title": "Indicator Marketplace",
+    "description": "A space for sharing JS and python based technical indicators."
+  },
+  {
+    "id": 4,
+    "name": "blog",
+    "title": "Blog",
+    "description": "A blog for sharing insights, scientific articles, and latest news."
+  }
+]
