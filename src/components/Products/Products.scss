@@ -1,0 +1,14 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/mixins" as *;
+
+.products-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: $gap-default * 2;
+  background-color: $primary-black;
+  padding: $padding-default * 4;
+  margin: $padding-default * 4 0;
+}

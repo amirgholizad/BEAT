@@ -1,7 +1,6 @@
-import { useNavigate } from "react-router";
-import { useEffect } from "react";
 import aboutPic from "../../assets/images/about-image.png";
 import amirg from "../../assets/images/Amir.png";
+import Products from "../../components/Products/Products";
 import "./Home.scss";
 
 function Home() {
@@ -39,7 +38,7 @@ function Home() {
         </div>
         <img className="home-about__image" src={aboutPic} alt="about image" />
       </article>
-      {/* <Features/> */}
+      <Products />
       <section className="sub-footer">
         <div className="sub-footer__creators">
           <a href="https://github.com/amirgholizad/">

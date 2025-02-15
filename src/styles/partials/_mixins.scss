@@ -101,3 +101,21 @@
     height: $cta-height-td;
   }
 }
+
+@mixin button-cta--green {
+  background-color: $secondary-green;
+  color: $primary-white;
+  text-align: center;
+  height: $cta-height-mobile;
+  font-family: $font-base;
+  font-weight: $font-weight-semibold;
+  font-size: $p-font-medium;
+  padding: $padding-cta-left-right $padding-cta-left-right * 2;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+  &:hover {
+    filter: brightness(110%);
+  }
+  @include tablet {
+    height: $cta-height-td;
+  }
+}
