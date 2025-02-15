@@ -10,5 +10,8 @@
   p {
     text-align: center;
     color: $primary-black;
+    font-size: $p-font-small;
+    font-weight: $font-weight-default;
+    line-height: $p-small-line-height;
   }
 }
