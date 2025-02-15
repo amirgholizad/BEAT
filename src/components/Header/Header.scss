@@ -6,8 +6,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: $padding-default $padding-default * 2;
-  background-color: $primary-black;
+  padding: 0 $padding-default * 2;
+  background-color: $market-black;
   color: $primary-white;
   &__logo {
     color: $primary-white;

@@ -1,0 +1,37 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/mixins" as *;
+
+.home-banner {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 30vh;
+  background-image: url("../../assets/images/background-home-banner.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 70vh;
+  padding: $padding-default $padding-default * 2;
+  &__title {
+    color: $primary-white;
+    font-family: $font-base;
+    font-size: 2.5rem;
+    font-weight: $font-weight-semibold;
+    margin-bottom: $padding-default;
+
+    span {
+      font-family: $logo-font-family;
+      font-size: $logo-font-size;
+    }
+  }
+  &__intro {
+    color: $primary-white;
+    font-family: $font-base;
+    font-size: 1.5rem;
+    font-weight: $font-weight-semibold;
+
+    margin-bottom: $padding-default * 2;
+  }
+}

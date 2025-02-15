@@ -1,11 +1,17 @@
 import { useNavigate } from "react-router";
 import { useEffect } from "react";
+import "./Home.scss";
 
 function Home() {
   return (
-    <div>
-      <h1>Home</h1>
-    </div>
+    <section className="home-banner">
+      <h1 className="home-banner__title">
+        Welcome to <span className="logo">BEAT!</span>
+      </h1>
+      <h2 className="home-banner__intro">
+        Where science and markets come together!
+      </h2>
+    </section>
   );
 }
 
