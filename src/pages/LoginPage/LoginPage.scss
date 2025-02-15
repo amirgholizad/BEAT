@@ -1,0 +1,100 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/mixins" as *;
+
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url("../../assets/images/background-login-page.svg");
+  &-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: $padding-default * 1.5 0;
+    &-container {
+      border-radius: $border-radius-default;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: $primary-white;
+      padding: $padding-default/2;
+      width: 35vw;
+      min-width: $mobile-breakpoint;
+    }
+    &-logo {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-image: url("../../assets/images/background-login-form.svg");
+      background-size: cover;
+      width: 100%;
+      height: $login-form-background;
+      border-radius: $border-radius-default;
+      h1 {
+        color: $primary-white;
+        text-align: center;
+        font-family: $logo-font-family;
+        font-size: $logo-font-size;
+        font-weight: $logo-font-weight;
+        line-height: $logo-line-height;
+      }
+    }
+    &-background {
+      border-radius: $border-radius-default;
+    }
+
+    &-group {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: flex-end;
+      gap: $padding-default/2;
+      margin: $padding-default/2 auto;
+      width: 100%;
+      img {
+        width: $icon-size;
+        height: $icon-size;
+      }
+    }
+  }
+}
+
+.login-button {
+  @include button;
+  width: 70%;
+  margin: $padding-default;
+}
+
+.input-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $padding-default/2;
+  margin: $padding-default/2 auto;
+  width: 100%;
+  &__icon {
+    width: $icon-size/2;
+    height: $icon-size/2;
+  }
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.input--invalid {
+  color: red;
+  border-color: red;
+  box-shadow: none;
+  outline: 0 none;
+}
+
+.text-light {
+  color: $primary-white;
+}
