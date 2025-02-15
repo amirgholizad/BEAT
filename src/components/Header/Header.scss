@@ -1,0 +1,48 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/mixins" as *;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $padding-default $padding-default * 2;
+  background-color: $primary-black;
+  color: $primary-white;
+  &__logo {
+    color: $primary-white;
+    text-align: center;
+    font-family: $logo-font-family;
+    font-size: $logo-font-size;
+    font-weight: $logo-font-weight;
+    line-height: $logo-line-height;
+  }
+}
+
+.nav {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  align-items: center;
+  gap: $gap-default * 20;
+
+  &__links {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    align-items: center;
+    gap: $gap-default * 2;
+  }
+}
+
+.button {
+  @include button-cta;
+  padding: $padding-default;
+  border-radius: $border-radius-default;
+}
+
+.button--reverse {
+  @include button-cta--reverse;
+  padding: $padding-default;
+  border-radius: $border-radius-default;
+}

@@ -67,3 +67,35 @@
   text-align: center;
   width: 50%;
 }
+
+@mixin button-cta {
+  border: none;
+  background-color: none;
+  color: $primary-white;
+  text-align: center;
+  height: $cta-height-mobile;
+  font-family: $font-base;
+  font-weight: $font-weight-semibold;
+  font-size: $p-font-medium;
+  &:hover {
+    background-color: $primary-white;
+    color: $primary-black;
+  }
+  @include tablet {
+    height: $cta-height-td;
+  }
+}
+@mixin button-cta--reverse {
+  @include button-cta;
+  background-color: $primary-white;
+  color: $primary-black;
+
+  &:hover {
+    background-color: $primary-black;
+    color: $primary-white;
+    border: 2px solid $primary-white;
+  }
+  @include tablet {
+    height: $cta-height-td;
+  }
+}

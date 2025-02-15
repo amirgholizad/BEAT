@@ -9,6 +9,8 @@ import { useState } from "react";
 import axios from "axios";
 import Home from "./pages/Home/Home";
 import LoginPage from "./pages/LoginPage/LoginPage";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 import "./App.scss";
 
 function App() {
@@ -56,6 +58,7 @@ function App() {
   return (
     <>
       <Router>
+        <Header />
         <Routes>
           <Route
             path="/login"
@@ -77,11 +80,13 @@ function App() {
               )
             }
           />
-          <Route
+          {/* <Route
             path="/"
             element={authorized ? <Home /> : <Navigate replace to="/login" />}
-          />
+          /> */}
+          <Route path="/" element={<Home />} />
         </Routes>
+        <Footer />
       </Router>
     </>
   );
