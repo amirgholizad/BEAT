@@ -88,3 +88,22 @@
     width: 40%;
   }
 }
+
+.sub-footer {
+  &__creators {
+    margin: auto;
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    &__img {
+      width: 10vh;
+      height: 10vh;
+      border-radius: 50%;
+      opacity: 100%;
+      &:hover {
+        opacity: 70%;
+      }
+    }
+  }
+}
