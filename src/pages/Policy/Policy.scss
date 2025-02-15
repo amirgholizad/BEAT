@@ -1,0 +1,28 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/mixins" as *;
+
+.policy-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: $gap-default * 2;
+  background-color: $primary-white;
+  border-radius: $border-radius-default;
+  padding: $padding-default * 2;
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-default * 8;
+    list-style-type: none;
+    padding: 0;
+    li {
+      color: $primary-black;
+      text-align: left;
+      font-size: $p-font-large;
+      font-weight: $font-weight-default;
+      line-height: $p-large-line-height;
+    }
+  }
+}

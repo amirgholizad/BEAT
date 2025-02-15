@@ -9,6 +9,7 @@ import { useState } from "react";
 import axios from "axios";
 import Home from "./pages/Home/Home";
 import LoginPage from "./pages/LoginPage/LoginPage";
+import Policy from "./pages/Policy/Policy";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import "./App.scss";
@@ -85,6 +86,7 @@ function App() {
             element={authorized ? <Home /> : <Navigate replace to="/login" />}
           /> */}
           <Route path="/" element={<Home />} />
+          <Route path="/policy" element={<Policy />} />
         </Routes>
         <Footer />
       </Router>
