@@ -11,10 +11,10 @@
   background-color: $primary-black;
   padding: $padding-default * 2;
   margin-bottom: $padding-default * 4;
-  h2 {
-    color: $primary-white;
-    text-align: center;
-  }
+}
+.products-headline {
+  color: $primary-white;
+  text-align: center;
 }
 .products-list {
   display: flex;

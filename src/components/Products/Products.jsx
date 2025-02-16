@@ -11,7 +11,7 @@ const images = [chart, portfolio, indicatorMarketplace, blog];
 function Products() {
   return (
     <section className="products-container">
-      <h2>Our Products</h2>
+      <h2 className="products-headline">Our Products</h2>
       <section className="products-list">
         {productsList.map((product, index) => (
           <Product key={product.id} product={product} src={images[index]} />
