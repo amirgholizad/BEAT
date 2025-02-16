@@ -8,6 +8,7 @@ import {
 import { useState } from "react";
 import axios from "axios";
 import Home from "./pages/Home/Home";
+import Docs from "./pages/Docs/Docs";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import Policy from "./pages/Policy/Policy";
 import Header from "./components/Header/Header";
@@ -87,6 +88,7 @@ function App() {
           /> */}
           <Route path="/" element={<Home />} />
           <Route path="/policy" element={<Policy />} />
+          <Route path="/docs" element={<Docs />} />
         </Routes>
         <Footer />
       </Router>
