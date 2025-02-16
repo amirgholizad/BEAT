@@ -27,6 +27,9 @@ function IndicatorMarketplace() {
 
         <div className="indicator__list__filters">
           <h4>
+            LICENSE <img src={sort_icon} />
+          </h4>
+          <h4>
             USER <img src={sort_icon} />
           </h4>
           <h4>
@@ -38,9 +41,7 @@ function IndicatorMarketplace() {
           <h4>
             LANGUAGE <img src={sort_icon} />
           </h4>
-          <h4>
-            LICENSE <img src={sort_icon} />
-          </h4>
+
           <h4>
             DATE PUBLISHED/UPDATED <img src={sort_icon} />
           </h4>
