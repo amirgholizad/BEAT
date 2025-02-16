@@ -29,25 +29,27 @@ function IndicatorMarketplace() {
 
         <div className="indicator__list__filters">
           <h4>
-            LICENSE <img src={sort_icon} />
+            LICENSE <img className="sort-icon" src={sort_icon} />
           </h4>
           <h4>
-            USER <img src={sort_icon} />
+            USER <img className="sort-icon" src={sort_icon} />
           </h4>
           <h4>
-            NAME <img src={sort_icon} />
+            NAME <img className="sort-icon" src={sort_icon} />
           </h4>
           <h4>
-            TYPE <img src={sort_icon} />
+            TYPE <img className="sort-icon" src={sort_icon} />
           </h4>
           <h4>
-            LANGUAGE <img src={sort_icon} />
+            LANGUAGE <img className="sort-icon" src={sort_icon} />
           </h4>
 
           <h4>
-            DATE PUBLISHED/UPDATED <img src={sort_icon} />
+            DATE PUBLISHED/UPDATED <img className="sort-icon" src={sort_icon} />
           </h4>
-          <h4>RATING</h4>
+          <h4>
+            RATING <img className="sort-icon" src={sort_icon} />
+          </h4>
         </div>
 
         {indicators.map((indicator) => (

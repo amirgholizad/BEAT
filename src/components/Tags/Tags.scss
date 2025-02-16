@@ -1,0 +1,44 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.indicator {
+  &__tag {
+    height: 1.5rem;
+    width: auto;
+    padding: 0 $padding-margin-default;
+    border-radius: $border-radius-default;
+    font-size: $h4-font-size;
+    line-height: $h4-line-height;
+    display: inline-block;
+    text-transform: uppercase;
+    align-content: center;
+    font-weight: $font-weight-semibold;
+    vertical-align: text-top;
+
+    @include tablet {
+      height: 1.625rem;
+      font-size: $h4-font-size-td;
+      line-height: $h4-line-height-td;
+    }
+
+    &--python {
+      background-color: $python-tag-bg;
+      color: $python-tag-color;
+    }
+
+    &--javascript {
+      background-color: $javascript-tag-bg;
+      color: $javascript-tag-color;
+    }
+
+    &--free {
+      background-color: $free-tag-bg;
+      color: $free-tag-color;
+    }
+
+    &--premium {
+      background-color: $premium-tag-bg;
+      color: $premium-tag-color;
+    }
+  }
+}

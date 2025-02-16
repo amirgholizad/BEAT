@@ -1,0 +1,43 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/mixins" as *;
+
+.marketplace-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: $gap-default * 2;
+  background-color: $primary-black;
+  padding: $padding-default * 2;
+  padding-bottom: $padding-default * 4;
+  height: 100vh;
+}
+
+.indicator__list {
+  width: 100%;
+
+  &__headline {
+    color: $primary-white;
+    text-align: center;
+    font-size: $h2-font-size;
+    font-weight: $font-weight-semibold;
+    line-height: $h2-line-height;
+    text-align: left;
+  }
+  &__filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: $gap-default * 2;
+    padding: $padding-default;
+    background-color: $primary-black;
+    color: $primary-white;
+    width: 100%;
+  }
+}
+
+.sort-icon {
+  color: $primary-white;
+  width: $icon-size/4;
+}

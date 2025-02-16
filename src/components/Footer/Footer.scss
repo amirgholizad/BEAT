@@ -7,10 +7,11 @@
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  margin-bottom: $padding-default;
+  padding-bottom: $padding-default;
+  background-color: $primary-black;
   p {
     text-align: center;
-    color: $primary-black;
+    color: $primary-white;
     font-size: $p-font-small;
     font-weight: $font-weight-default;
     line-height: $p-small-line-height;

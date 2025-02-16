@@ -3,16 +3,16 @@ import "./Policy.scss";
 function Policy() {
   return (
     <main className="policy-main">
-      <h1>BEAT Policy</h1>
+      <h1 className="policy-headline">BEAT Policy</h1>
       <ul className="policy-list">
-        <li>
+        <li className="policy-list-item">
           <h2>1. Introduction</h2>
           <p>
             Welcome to BEAT. By using our platform, you agree to follow the
             policies outlined below.
           </p>
         </li>
-        <li>
+        <li className="policy-list-item">
           <h2>2. Usage Policy</h2>
           <p>
             BEAT provides technical indicators for financial analysis. These
@@ -20,7 +20,7 @@ function Policy() {
             should not be considered financial advice.
           </p>
         </li>
-        <li>
+        <li className="policy-list-item">
           <h2>3. Data and Content Policy</h2>
           <p>
             All technical indicators shared on BEAT are either open-source or
@@ -28,7 +28,7 @@ function Policy() {
             right to share any content they upload.
           </p>
         </li>
-        <li>
+        <li className="policy-list-item">
           <h2>4. Privacy Policy</h2>
           <p>
             We respect your privacy. BEAT does not collect personal data without
@@ -36,21 +36,21 @@ function Policy() {
             platform.
           </p>
         </li>
-        <li>
+        <li className="policy-list-item">
           <h2>5. Liability Disclaimer</h2>
           <p>
             BEAT and its contributors are not responsible for any financial
             losses incurred from the use of indicators shared on this platform.
           </p>
         </li>
-        <li>
+        <li className="policy-list-item">
           <h2>6. Modifications</h2>
           <p>
             BEAT reserves the right to update this policy at any time. Users
             will be notified of significant changes.
           </p>
         </li>
-        <li>
+        <li className="policy-list-item">
           <h2>7. Contact</h2>
           <p>
             If you have any questions regarding our policies, please contact us

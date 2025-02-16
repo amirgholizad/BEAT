@@ -8,6 +8,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   gap: $gap-default * 2;
+  background-color: $primary-black;
 }
 
 .docs-aside {
@@ -16,7 +17,7 @@
   padding: $padding-default;
   border-right: $divider;
   h2 {
-    color: $primary-black;
+    color: $primary-white;
     text-align: left;
     padding: $padding-default;
     font-size: $h2-font-size;
@@ -24,7 +25,7 @@
     line-height: $h2-line-height;
   }
   li {
-    color: $primary-black;
+    color: $primary-white;
     text-align: left;
     font-size: $p-font-large;
     font-weight: $font-weight-default;
@@ -33,8 +34,8 @@
     padding: $padding-default;
     cursor: pointer;
     &:hover {
-      background-color: $primary-black;
-      color: $primary-white;
+      background-color: $primary-white;
+      color: $primary-black;
     }
   }
 }
@@ -48,7 +49,7 @@
   padding: 0 $padding-default * 2;
   width: 100%;
   h1 {
-    color: $primary-black;
+    color: $primary-white;
     text-align: left;
     margin: $padding-default * 1.5 0;
     font-size: $h1-font-size;
@@ -56,7 +57,7 @@
     line-height: $h1-line-height;
   }
   p {
-    color: $primary-black;
+    color: $primary-white;
     text-align: left;
     font-size: $p-font-large;
     font-weight: $font-weight-default;
