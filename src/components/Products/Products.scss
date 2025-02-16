@@ -2,13 +2,25 @@
 @use "../../styles/partials/global" as *;
 @use "../../styles/partials/mixins" as *;
 
+.products-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: $gap-default * 2;
+  background-color: $primary-black;
+  padding: $padding-default * 2;
+  margin-bottom: $padding-default * 4;
+}
+.products-headline {
+  color: $primary-white;
+  text-align: center;
+}
 .products-list {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  gap: $gap-default * 2;
-  background-color: $primary-black;
-  padding: $padding-default * 4;
-  margin: $padding-default * 4 0;
+  gap: $gap-default * 8;
+  padding: $padding-default * 2;
 }

@@ -1,0 +1,65 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/mixins" as *;
+
+.docs-main {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: $gap-default * 2;
+}
+
+.docs-aside {
+  height: 100vh;
+  width: 30vw;
+  padding: $padding-default;
+  border-right: $divider;
+  h2 {
+    color: $primary-black;
+    text-align: left;
+    padding: $padding-default;
+    font-size: $h2-font-size;
+    font-weight: $font-weight-semibold;
+    line-height: $h2-line-height;
+  }
+  li {
+    color: $primary-black;
+    text-align: left;
+    font-size: $p-font-large;
+    font-weight: $font-weight-default;
+    line-height: $p-large-line-height;
+    list-style-type: none;
+    padding: $padding-default;
+    cursor: pointer;
+    &:hover {
+      background-color: $primary-black;
+      color: $primary-white;
+    }
+  }
+}
+
+.docs-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: $gap-default * 2;
+  padding: 0 $padding-default * 2;
+  width: 100%;
+  h1 {
+    color: $primary-black;
+    text-align: left;
+    margin: $padding-default * 1.5 0;
+    font-size: $h1-font-size;
+    font-weight: $font-weight-semibold;
+    line-height: $h1-line-height;
+  }
+  p {
+    color: $primary-black;
+    text-align: left;
+    font-size: $p-font-large;
+    font-weight: $font-weight-default;
+    line-height: $p-large-line-height;
+  }
+}
