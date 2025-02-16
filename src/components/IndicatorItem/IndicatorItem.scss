@@ -1,0 +1,14 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/mixins" as *;
+
+.indicator-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: $padding-default * 2;
+  background-color: $primary-black;
+  padding: $padding-default * 2;
+  margin-bottom: $padding-default * 4;
+}

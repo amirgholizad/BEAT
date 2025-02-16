@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function IndicatorItem({ indicator }) {
   return (
     <div key={indicator.id} className="indicator-container">
-      <p className="indicator-description">{indicator.license}</p>
+      <p className="indicator-license">{indicator.license}</p>
       <h2 className="indicator-name">{indicator.name}</h2>
       <h3 className="indicator-author">{indicator.user}</h3>
       <p className="indicator-type">{indicator.type}</p>
