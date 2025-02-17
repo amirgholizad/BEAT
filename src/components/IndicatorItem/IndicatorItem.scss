@@ -9,7 +9,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
   padding: $padding-default;
   background-color: $primary-white;
   border-bottom: $divider;
@@ -19,25 +19,16 @@
   }
 
   @include tablet {
-    all: unset;
-    padding: 0 calc(4 * $padding-margin-default);
     display: grid;
-    grid-template-columns: 1.6fr 1.5fr 1.5fr 1.5fr 1.2fr;
-    column-gap: 2rem;
-    align-items: center;
-    background-color: $primary-white;
+    grid-template-columns: $grid-size $grid-size $grid-size * 0.75 $grid-size * 0.75 $grid-size $grid-size $grid-size * 0.5;
+    padding: 0 $padding-margin-default * 3;
+    background-color: $primary-black;
     height: 3.5rem;
-    border-bottom: $divider;
-  }
-  &__name {
-    grid-column: 3/4;
-    grid-row: 1;
+    border: $divider;
+    border-top: none;
+    text-align: left;
   }
 
-  &__user {
-    grid-column: 2/3;
-    grid-row: 1;
-  }
   &:hover {
     background-color: rgba(46, 102, 229, 0.07);
     cursor: pointer;
@@ -48,14 +39,9 @@
   height: 100%;
   padding-top: 1.05rem;
 
-  > p {
+  &__p {
     @include p2;
-  }
-
-  &__item {
-    display: flex;
-    align-items: center;
-    color: $secondary-green;
+    color: $primary-white;
   }
 
   &__right-icon {
@@ -63,13 +49,10 @@
     height: 1.25rem;
   }
 
-  &__label {
-    color: $secondary-slate;
-    font-size: $h4-font-size;
-    line-height: $h4-line-height;
-
-    @include tablet {
-      display: none;
-    }
+  &__name {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: $padding-default/2;
   }
 }

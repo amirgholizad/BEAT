@@ -24,16 +24,27 @@
     font-weight: $font-weight-semibold;
     line-height: $h2-line-height;
     text-align: left;
+    padding: $padding-default 0;
   }
   &__filters {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: baseline;
     gap: $gap-default * 2;
     padding: $padding-default;
     background-color: $primary-black;
     color: $primary-white;
+    border: $divider;
     width: 100%;
+    @include tablet {
+      display: grid;
+      grid-template-columns: $grid-size $grid-size $grid-size * 0.75 $grid-size * 0.75 $grid-size $grid-size $grid-size * 0.5;
+      padding: 0 $padding-margin-default * 3;
+      align-items: center;
+      height: 3.5rem;
+      border-bottom: $divider;
+      text-align: left;
+    }
   }
 }
 

@@ -1,8 +1,9 @@
 import "./IndicatorItem.scss";
 import chevron_right_icon from "../../assets/icons/SVG/chevron_icon.svg";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Tags from "../Tags/Tags";
+import axios from "axios";
 
 function IndicatorItem({ indicator }) {
   const baseUrl = import.meta.env.VITE_APP_URL;
@@ -20,6 +21,11 @@ function IndicatorItem({ indicator }) {
     rating_count,
     created_at,
   } = indicator;
+
+  const isoString = created_at;
+  const dateObj = new Date(isoString);
+  const date = dateObj.toLocaleDateString("en-CA");
+
   async function getUser() {
     try {
       const res = await axios.get(`${baseUrl}/user/${user_id}`);
@@ -28,6 +34,10 @@ function IndicatorItem({ indicator }) {
       console.log(error);
     }
   }
+  useEffect(() => {
+    getUser();
+  }, [baseUrl, user_id]);
+  console.log(created_at);
   return (
     // <div key={indicator.id} className="indicator-container">
     //   <p className="indicator-license">{indicator.license}</p>
@@ -50,30 +60,28 @@ function IndicatorItem({ indicator }) {
           <Tags tag={license} />
         </section>
         <section className="indicator-detail-wrapper">
-          <Link to={`/indicator/${indicator.id}`}>
-            <h3 className="indicator-detail-wrapper__item ">
-              {name}
-              <img
-                className="indicator-detail-wrapper__right-icon"
-                src={chevron_right_icon}
-              />
-            </h3>
-          </Link>
+          <p className="indicator-detail-wrapper__p">{user}</p>
         </section>
-        <section className="indicator-detail-wrapper indicator-item-container__type">
-          <p>{user}</p>
+        <Link to={`/indicator/${indicator.id}`}>
+          <section className="indicator-detail-wrapper indicator-detail-wrapper__name">
+            <p className="indicator-detail-wrapper__p">{name}</p>
+            <img
+              className="indicator-detail-wrapper__right-icon"
+              src={chevron_right_icon}
+            />
+          </section>
+        </Link>
+        <section className="indicator-detail-wrapper">
+          <p className="indicator-detail-wrapper__p">{type}</p>
         </section>
-        <section className="indicator-detail-wrapper indicator-item-container__type">
-          <p>{type}</p>
-        </section>
-        <section className="indicator-detail-wrapper indicator-item-container__language">
+        <section className="indicator-detail-wrapper">
           <Tags tag={language} />
         </section>
         <section className="indicator-detail-wrapper">
-          <p>{created_at}</p>
+          <p className="indicator-detail-wrapper__p">{date}</p>
         </section>
         <section className="indicator-detail-wrapper">
-          <p>{`${rating} (${rating_count} ratings)`}</p>
+          <p className="indicator-detail-wrapper__p">{`${rating} (${rating_count} ratings)`}</p>
         </section>
       </div>
     </article>

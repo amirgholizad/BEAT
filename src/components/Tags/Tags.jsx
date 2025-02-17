@@ -12,7 +12,6 @@ const Tags = ({ tag }) => {
   } else if (tag === "PREMIUM") {
     tagClass = "indicator__tag--premium";
   }
-  console.log(tagClass);
   return (
     <>
       <p className={`indicator__tag ${tagClass}`}>{tag}</p>

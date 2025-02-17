@@ -45,7 +45,7 @@ function IndicatorMarketplace() {
           </h4>
 
           <h4>
-            DATE PUBLISHED/UPDATED <img className="sort-icon" src={sort_icon} />
+            LAST UPDATED <img className="sort-icon" src={sort_icon} />
           </h4>
           <h4>
             RATING <img className="sort-icon" src={sort_icon} />
