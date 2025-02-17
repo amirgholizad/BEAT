@@ -14,6 +14,7 @@ import Policy from "./pages/Policy/Policy";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import "./App.scss";
+import IndicatorMarketplace from "./pages/IndicatorMarketplace/IndicatorMarketplace";
 
 function App() {
   let accessToken = localStorage.getItem("token");
@@ -89,6 +90,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/policy" element={<Policy />} />
           <Route path="/docs" element={<Docs />} />
+          <Route
+            path="/indicator-marketplace"
+            element={<IndicatorMarketplace />}
+          />
         </Routes>
         <Footer />
       </Router>

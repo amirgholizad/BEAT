@@ -1,0 +1,58 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/mixins" as *;
+
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.indicator-item-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: $padding-default;
+  background-color: $primary-white;
+  border-bottom: $divider;
+  &:hover {
+    background-color: rgba(46, 102, 229, 0.07);
+    cursor: pointer;
+  }
+
+  @include tablet {
+    display: grid;
+    grid-template-columns: $grid-size $grid-size $grid-size * 0.75 $grid-size * 0.75 $grid-size $grid-size $grid-size * 0.5;
+    padding: 0 $padding-margin-default * 3;
+    background-color: $primary-black;
+    height: 3.5rem;
+    border: $divider;
+    border-top: none;
+    text-align: left;
+  }
+
+  &:hover {
+    background-color: rgba(46, 102, 229, 0.07);
+    cursor: pointer;
+  }
+}
+
+.indicator-detail-wrapper {
+  height: 100%;
+  padding-top: 1.05rem;
+
+  &__p {
+    @include p2;
+    color: $primary-white;
+  }
+
+  &__right-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  &__name {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: $padding-default/2;
+  }
+}
