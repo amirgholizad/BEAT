@@ -3,21 +3,18 @@ import axios from "axios";
 import sort_icon from "../../assets/icons/SVG/sort_icon.svg";
 import IndicatorItem from "../../components/IndicatorItem/IndicatorItem";
 import { useEffect, useState } from "react";
+import { fetchIndicators } from "../../functions/Functions";
 function IndicatorMarketplace() {
   const [indicators, setIndicators] = useState([]);
   const baseUrl = import.meta.env.VITE_APP_URL;
 
   useEffect(() => {
-    const fetchIndicators = async () => {
-      try {
-        const res = await axios.get(`${baseUrl}/indicator`);
-        setIndicators(res.data);
-      } catch (error) {
-        console.log(error);
-      }
+    const getIndicators = async () => {
+      const data = await fetchIndicators(baseUrl);
+      if (data) setIndicators(data);
     };
-    fetchIndicators();
-  }, []);
+    getIndicators();
+  }, [baseUrl, fetchIndicators]);
 
   if (!indicators) {
     return <div>Loading...</div>;

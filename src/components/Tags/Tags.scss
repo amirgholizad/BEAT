@@ -4,7 +4,7 @@
 .indicator {
   &__tag {
     height: 1.5rem;
-    width: auto;
+    width: $tag-size;
     padding: 0 $padding-margin-default;
     border-radius: $border-radius-default;
     font-size: $h4-font-size;
@@ -14,6 +14,7 @@
     align-content: center;
     font-weight: $font-weight-semibold;
     vertical-align: text-top;
+    text-align: center;
 
     @include tablet {
       height: 1.625rem;
