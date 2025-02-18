@@ -54,6 +54,7 @@
   &__container {
     display: flex;
     flex-direction: column;
+    width: 100%;
     &__title {
       color: $primary-white;
       text-align: left;
@@ -68,12 +69,17 @@
       font-weight: $font-weight-default;
       line-height: $p-large-line-height;
     }
-    &__code {
-      color: $primary-white;
-      text-align: left;
-      font-size: $p-font-large;
-      font-weight: $font-weight-default;
-      line-height: $p-large-line-height;
+    &__code-container {
+      background-color: $secondary-slate;
+      padding: $padding-default;
+      width: 100%;
+      &__code {
+        color: $primary-white;
+        text-align: left;
+        font-size: $p-font-large;
+        font-weight: $font-weight-default;
+        line-height: $p-large-line-height;
+      }
     }
   }
   &__headline {

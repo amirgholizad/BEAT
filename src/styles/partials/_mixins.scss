@@ -40,6 +40,8 @@
 }
 
 @mixin form {
+  @content;
+
   height: 2.25rem;
   width: 25vw;
   min-width: $mobile-breakpoint * 0.7;

@@ -1,5 +1,4 @@
 @use "../../styles/partials/variables" as *;
-@use "../../styles/partials/global" as *;
 @use "../../styles/partials/mixins" as *;
 
 .label-input {
@@ -13,7 +12,7 @@
     &--textarea {
       display: flex;
       flex-direction: column;
-      height: 7.5rem;
+      height: 200px;
     }
   }
 

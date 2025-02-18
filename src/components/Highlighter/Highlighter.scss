@@ -1,0 +1,8 @@
+@use "../../styles/partials/variables" as *;
+// @use "../../styles/partials/global" as *;
+// @use "../../styles/partials/mixins" as *;
+
+.hljs {
+  color: $primary-white !important; /* Set text color to white */
+  background: $primary-black !important; /* Optional: Set a dark background */
+}
