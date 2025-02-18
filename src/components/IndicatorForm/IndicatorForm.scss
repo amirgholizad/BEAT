@@ -49,3 +49,16 @@
     }
   }
 }
+
+.input-error {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: $gap-default;
+  &__message {
+    color: red;
+    font-size: $p-font-medium;
+    font-weight: $font-weight-semibold;
+  }
+}

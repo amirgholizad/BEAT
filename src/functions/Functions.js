@@ -56,6 +56,7 @@ async function editIndicator(indicator, id, baseUrl) {
 async function createIndicator(indicator, baseUrl) {
   try {
     await axios.post(`${baseUrl}/indicator`, indicator);
+    return "Success";
   } catch (error) {
     console.log(error);
   }

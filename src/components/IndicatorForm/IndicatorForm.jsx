@@ -6,10 +6,12 @@ import {
   createIndicator,
   editIndicator,
 } from "../../functions/Functions";
-import Highlighter from "../Highlighter/Highlighter";
+import { useNavigate } from "react-router-dom";
+import alertIcon from "../../assets/icons/svg/alertIcon.svg";
 
 function IndicatorForm({ mode, initialData }) {
   const [users, setUsers] = useState([]);
+  const navigation = useNavigate();
   const baseUrl = import.meta.env.VITE_APP_URL;
 
   useEffect(() => {
@@ -53,8 +55,6 @@ function IndicatorForm({ mode, initialData }) {
     code: "",
   });
 
-  const [showSuccess, setShowSuccess] = useState(false);
-
   useEffect(() => {
     if (mode === "edit" && initialData) {
       setFormData({
@@ -84,7 +84,6 @@ function IndicatorForm({ mode, initialData }) {
       ...validationMessages,
       [name]: "",
     });
-    console.log(e.target.value);
   };
 
   const validateForm = () => {
@@ -166,20 +165,38 @@ function IndicatorForm({ mode, initialData }) {
         language: formData.language,
         license: formData.license,
         description: formData.description,
+        code: formData.code,
       };
-    }
-    try {
-      if (mode === "edit") {
-        await editIndicator(newIndicator, initialData.id, baseUrl);
-        setShowSuccess(true);
-      } else {
-        await createIndicator(newIndicator, baseUrl);
-        setShowSuccess(true);
+      try {
+        if (mode === "edit") {
+          console.log("newIndicator", newIndicator);
+          await editIndicator(newIndicator, initialData.id, baseUrl);
+
+          navigation("/indicator-marketplace");
+        } else {
+          const response = await createIndicator(newIndicator, baseUrl);
+          if (response === "Success") {
+            alert("Your indicator was successfully updated!");
+            setTimeout(() => {
+              navigation("/indicator-marketplace"), 3000;
+            });
+            setFormData(initialFormData);
+          } else {
+            alert("An error occurred. Please try again.");
+          }
+        }
+      } catch (error) {
+        console.error(error);
       }
-    } catch (error) {
-      console.error(error);
     }
   };
+
+  const ErrorMessage = ({ message }) => (
+    <span className="input-error">
+      <img src={alertIcon} alt="Error" className="input-error__icon" />
+      <p className="input-error__message">{message}</p>
+    </span>
+  );
 
   return (
     <form onSubmit={handleSubmit} className="create-indicator-form">
@@ -194,6 +211,10 @@ function IndicatorForm({ mode, initialData }) {
           placeholderText={"Select a user"}
           value={formData.user}
         />
+        {inputInvalid.user && (
+          <ErrorMessage message={validationMessages.user} />
+        )}
+
         <Input
           name="name"
           labelName="Name"
@@ -204,6 +225,10 @@ function IndicatorForm({ mode, initialData }) {
           placeholderText={"Enter a name"}
           value={formData.name}
         />
+        {inputInvalid.name && (
+          <ErrorMessage message={validationMessages.name} />
+        )}
+
         <Input
           name="type"
           labelName="Type"
@@ -215,6 +240,9 @@ function IndicatorForm({ mode, initialData }) {
           placeholderText={"Select a type"}
           value={formData.type}
         />
+        {inputInvalid.type && (
+          <ErrorMessage message={validationMessages.type} />
+        )}
         <Input
           name="language"
           labelName="Language"
@@ -226,6 +254,9 @@ function IndicatorForm({ mode, initialData }) {
           placeholderText={"Select a language"}
           value={formData.language}
         />
+        {inputInvalid.language && (
+          <ErrorMessage message={validationMessages.language} />
+        )}
         <Input
           name="license"
           labelName="License"
@@ -236,6 +267,9 @@ function IndicatorForm({ mode, initialData }) {
           className="create-indicator-form__input"
           value={formData.license}
         />
+        {inputInvalid.license && (
+          <ErrorMessage message={validationMessages.license} />
+        )}
       </section>
       <section className="create-indicator-form-right">
         <Input
@@ -246,7 +280,11 @@ function IndicatorForm({ mode, initialData }) {
           onChange={handleChange}
           className="create-indicator-form__input"
           placeholderText={"Enter a description"}
+          value={formData.description}
         />
+        {inputInvalid.description && (
+          <ErrorMessage message={validationMessages.description} />
+        )}
         <Input
           name="code"
           labelName="Code"
@@ -254,7 +292,11 @@ function IndicatorForm({ mode, initialData }) {
           placeholderText="Add your code..."
           onChange={handleChange}
           className="create-indicator-form__input"
+          value={formData.code}
         />
+        {inputInvalid.code && (
+          <ErrorMessage message={validationMessages.code} />
+        )}
         <button className="create-indicator-form-right__button">Submit</button>
       </section>
     </form>
