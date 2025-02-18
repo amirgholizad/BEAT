@@ -27,6 +27,15 @@ async function getUser(user_id, baseUrl) {
   }
 }
 
+async function getAllUsers(baseUrl) {
+  try {
+    const res = await axios.get(`${baseUrl}/user`);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 async function fetchIndicatorWithUser(id, baseUrl) {
   try {
     const res = await axios.get(`${baseUrl}/indicator/${id}/user`);
@@ -36,4 +45,28 @@ async function fetchIndicatorWithUser(id, baseUrl) {
   }
 }
 
-export { fetchIndicators, fetchIndicatorById, getUser, fetchIndicatorWithUser };
+async function editIndicator(indicator, id, baseUrl) {
+  try {
+    await axios.put(`${baseUrl}/indicator/${id}`, indicator);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function createIndicator(indicator, baseUrl) {
+  try {
+    await axios.post(`${baseUrl}/indicator`, indicator);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export {
+  fetchIndicators,
+  fetchIndicatorById,
+  getUser,
+  getAllUsers,
+  fetchIndicatorWithUser,
+  editIndicator,
+  createIndicator,
+};

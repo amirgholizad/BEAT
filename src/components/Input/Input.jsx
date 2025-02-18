@@ -9,10 +9,11 @@ const Input = ({
   onChange,
   className,
   options,
+  formData,
 }) => {
   if (type === "password" || type === "email") {
     return (
-      <div className="label-input">
+      <div className={`label-input`}>
         <div className={`label-input__input-container ${className}`}>
           <input
             type={type}
@@ -20,7 +21,7 @@ const Input = ({
             name={name}
             value={value}
             onChange={onChange}
-            className="label-input__input"
+            className={`label-input__input ${className}-input`}
           />
         </div>
       </div>
@@ -30,7 +31,7 @@ const Input = ({
   if (type === "textarea") {
     return (
       <div className="label-input">
-        <h3 className="label-input__title">{labelName}</h3>
+        <h3 className={`label-input__title ${className}-title`}>{labelName}</h3>
         <div
           className={`label-input__input-container label-input__input-container--textarea  ${className}`}
         >
@@ -39,7 +40,7 @@ const Input = ({
             name={name}
             value={value}
             onChange={onChange}
-            className="label-input__input label-input__input--textarea"
+            className={`label-input__input label-input__input--textarea ${className}-input`}
           />
         </div>
       </div>
@@ -49,24 +50,24 @@ const Input = ({
   if (type === "dropdown") {
     return (
       <div className="label-input">
-        <h3 className="label-input__title">{labelName}</h3>
+        <h3 className={`label-input__title ${className}-title`}>{labelName}</h3>
         <div className={`label-input__input-container ${className}`}>
           <select
             name={name}
             value={value}
             onChange={onChange}
-            className="label-input__input label-input__input--dropdown"
+            className={`label-input__input label-input__input--dropdown ${className}-input`}
           >
             <option value="" disabled>
               {placeholderText}
             </option>
-            {options.map((option) => {
+            {options.map((option, index) => {
               const optionValue =
                 typeof option === "object" ? option.value : option;
               const optionLabel =
                 typeof option === "object" ? option.label : option;
               return (
-                <option key={optionValue} value={optionValue}>
+                <option key={`${index}${optionValue}`} value={optionValue}>
                   {optionLabel}
                 </option>
               );
@@ -80,32 +81,26 @@ const Input = ({
   if (type === "radio") {
     return (
       <div className="label-input">
-        <h3 className="label-input__title">{labelName}</h3>
+        <h3 className={`label-input__title ${className}-title`}>{labelName}</h3>
         <div className={`label-input__radio ${className}`}>
           {options.map((option) => {
-            const optionValue =
-              typeof option === "object" ? option.value : option;
-            const optionLabel =
-              typeof option === "object" ? option.label : option;
             return (
-              <div key={optionValue} className="label-input__radio-text">
+              <div key={option} className="label-input__radio-text">
                 <input
                   type="radio"
-                  id={`radioInput-${optionValue}`}
-                  className="label-input__radio-input"
+                  id={`radioInput-${option}`}
+                  className={`label-input__radio-input ${className}-input`}
                   name={name}
-                  value={optionValue}
-                  checked={value === optionValue}
+                  value={option}
+                  checked={value === option}
                   onChange={onChange}
                 />
                 <p
                   className={`label-input__radio-item ${
-                    value === optionValue
-                      ? "label-input__radio-item--selected"
-                      : ""
-                  }`}
+                    value === option ? "label-input__radio-item--selected" : ""
+                  } ${className}-radio`}
                 >
-                  {optionLabel}
+                  {option}
                 </p>
               </div>
             );
@@ -118,7 +113,7 @@ const Input = ({
   if (type === "text" || type === "email") {
     return (
       <div className="label-input">
-        <h3 className="label-input__title">{labelName}</h3>
+        <h3 className={`label-input__title ${className}-title`}>{labelName}</h3>
         <div className={`label-input__input-container ${className}`}>
           <input
             type={type}
@@ -126,7 +121,7 @@ const Input = ({
             name={name}
             value={value}
             onChange={onChange}
-            className="label-input__input"
+            className={`label-input__input ${className}-input`}
           />
         </div>
       </div>

@@ -16,6 +16,7 @@ import Footer from "./components/Footer/Footer";
 import "./App.scss";
 import IndicatorMarketplace from "./pages/IndicatorMarketplace/IndicatorMarketplace";
 import IndicatorDetails from "./pages/IndicatorDetails/IndicatorDetails";
+import CreateIndicator from "./pages/CreateIndicator/CreateIndicator";
 
 function App() {
   let accessToken = localStorage.getItem("token");
@@ -96,6 +97,7 @@ function App() {
             element={<IndicatorMarketplace />}
           />
           <Route path="/indicator/:id" element={<IndicatorDetails />} />
+          <Route path="/indicator/create" element={<CreateIndicator />} />
         </Routes>
         <Footer />
       </Router>
