@@ -62,6 +62,24 @@ async function createIndicator(indicator, baseUrl) {
   }
 }
 
+async function createBlog(blog, baseUrl) {
+  try {
+    await axios.post(`${baseUrl}/blog`, blog);
+    return "Success";
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function editBlog(blog, id, baseUrl) {
+  try {
+    await axios.put(`${baseUrl}/blog/${id}`, blog);
+    return "Success";
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export {
   fetchIndicators,
   fetchIndicatorById,
@@ -70,4 +88,6 @@ export {
   fetchIndicatorWithUser,
   editIndicator,
   createIndicator,
+  createBlog,
+  editBlog,
 };
