@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./Uploader.scss";
 import axios from "axios";
 
-function Uploader() {
+function Uploader({ photoName }) {
   const baseUrl = import.meta.env.VITE_APP_URL;
   const [image, setImage] = useState(null);
   const [file, setFile] = useState(null);
@@ -20,11 +20,16 @@ function Uploader() {
     formData.append("file", file);
 
     try {
-      const response = await axios.post(`${baseUrl}/upload`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      console.log("File name:", photoName);
+      const response = await axios.post(
+        `${baseUrl}/upload?photo_name=${photoName}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
       console.log("File upload response:", response.data.message);
     } catch (error) {

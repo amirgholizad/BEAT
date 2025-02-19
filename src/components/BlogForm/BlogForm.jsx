@@ -5,11 +5,10 @@ import { useEffect, useState } from "react";
 import { getAllUsers, createBlog, editBlog } from "../../functions/Functions";
 import { useNavigate } from "react-router-dom";
 import alertIcon from "../../assets/icons/svg/alertIcon.svg";
+import sha256 from "crypto-js/sha256";
 
 function BlogForm({ mode, initialData }) {
   const [users, setUsers] = useState([]);
-  const [image, setImage] = useState(null);
-  const [file, setFile] = useState(null);
   const navigation = useNavigate();
   const baseUrl = import.meta.env.VITE_APP_URL;
 
@@ -26,7 +25,6 @@ function BlogForm({ mode, initialData }) {
     user: "",
     title: "",
     links: "",
-    files: null,
     content: "",
   };
 
@@ -34,7 +32,6 @@ function BlogForm({ mode, initialData }) {
     initialFormData.user = initialData.user;
     initialFormData.title = initialData.title;
     initialFormData.links = initialData.links;
-    initialFormData.files = initialData.files;
     initialFormData.content = initialData.content;
   }
 
@@ -43,14 +40,12 @@ function BlogForm({ mode, initialData }) {
     user: false,
     title: false,
     links: false,
-    files: false,
     content: false,
   });
   const [validationMessages, setValidationMessages] = useState({
     user: "",
     title: "",
     links: "",
-    files: "",
     content: "",
   });
 
@@ -60,7 +55,6 @@ function BlogForm({ mode, initialData }) {
         user: initialData.user,
         title: initialData.title,
         links: initialData.links,
-        files: initialData.files,
         content: initialData.content,
       });
     }
@@ -73,6 +67,7 @@ function BlogForm({ mode, initialData }) {
       ...formData,
       [name]: value,
     });
+
     setInputInvalid({
       ...inputInvalid,
       [name]: false,
@@ -89,7 +84,6 @@ function BlogForm({ mode, initialData }) {
       user: false,
       title: false,
       links: false,
-      files: false,
       content: false,
     };
 
@@ -97,7 +91,6 @@ function BlogForm({ mode, initialData }) {
       user: "",
       title: "",
       links: "",
-      files: "",
       content: "",
     };
 
@@ -119,12 +112,6 @@ function BlogForm({ mode, initialData }) {
       isValid = false;
     }
 
-    if (!formData.files) {
-      newInputInvalid.files = true;
-      newValidationMessages.files = "Please upload a cover picture";
-      isValid = false;
-    }
-
     if (!formData.content) {
       newInputInvalid.content = true;
       newValidationMessages.content = "You can not submit an empty blog";
@@ -136,14 +123,19 @@ function BlogForm({ mode, initialData }) {
     return isValid;
   };
 
+  const photoName = sha256(
+    formData.title + formData.user + Date.now()
+  ).toString();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (validateForm()) {
       const newBlog = {
         user: formData.user,
         title: formData.title,
         links: formData.links,
-        files: formData.files,
+        files: `${photoName}.png`,
         content: formData.content,
       };
       try {
@@ -228,7 +220,7 @@ function BlogForm({ mode, initialData }) {
         {inputInvalid.links && (
           <ErrorMessage message={validationMessages.links} />
         )}
-        <Uploader />
+        <Uploader photoName={photoName} />
       </section>
       <section className="create-blog-form-right">
         <Input
@@ -243,7 +235,9 @@ function BlogForm({ mode, initialData }) {
         {inputInvalid.content && (
           <ErrorMessage message={validationMessages.content} />
         )}
-        <button className="create-blog-form-right__button">Submit</button>
+        <button className="create-blog-form-right__button" type="submit">
+          Submit
+        </button>
       </section>
     </form>
   );

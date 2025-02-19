@@ -63,6 +63,7 @@ async function createIndicator(indicator, baseUrl) {
 }
 
 async function createBlog(blog, baseUrl) {
+  console.log("blog", blog);
   try {
     await axios.post(`${baseUrl}/blog`, blog);
     return "Success";
