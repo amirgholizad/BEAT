@@ -20,7 +20,6 @@ function Uploader({ photoName }) {
     formData.append("file", file);
 
     try {
-      console.log("File name:", photoName);
       const response = await axios.post(
         `${baseUrl}/upload?photo_name=${photoName}`,
         formData,
@@ -30,8 +29,6 @@ function Uploader({ photoName }) {
           },
         }
       );
-
-      console.log("File upload response:", response.data.message);
     } catch (error) {
       console.error("Upload failed:", error);
     }
