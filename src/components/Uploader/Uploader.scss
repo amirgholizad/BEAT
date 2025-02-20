@@ -2,7 +2,16 @@
 @use "../../styles/partials/global" as *;
 @use "../../styles/partials/mixins" as *;
 
-.upload-button {
-  @include button-cta--green;
-  margin-left: 45%;
+.uploader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: $primary-black;
+  color: $primary-white;
+  &__button {
+    @include button-cta--green;
+    margin-top: $padding-default;
+    margin-left: 65%;
+  }
 }

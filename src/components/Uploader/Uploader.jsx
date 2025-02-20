@@ -35,16 +35,22 @@ function Uploader({ photoName }) {
   };
 
   return (
-    <div>
-      <input type="file" accept="image/*" onChange={handleImageChange} />
+    <div className="uploader">
+      <input
+        className="uploader__input"
+        type="file"
+        accept="image/*"
+        onChange={handleImageChange}
+      />
       {image && (
         <img
           src={image}
           alt="Preview"
           style={{ maxWidth: "300px", marginTop: "10px" }}
+          className="uploader__preview"
         />
       )}
-      <button className="upload-button" onClick={handleUpload}>
+      <button className="uploader__button" onClick={handleUpload}>
         Submit
       </button>
     </div>
