@@ -2,13 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { fetchIndicatorWithUser } from "../../functions/Functions";
 import Tags from "../../components/Tags/Tags";
-import Highlighter from "../../components/Highlighter/Highlighter";
 import "./IndicatorDetails.scss";
-import { use } from "react";
 function IndicatorDetails() {
   const baseUrl = import.meta.env.VITE_APP_URL;
   const id = useParams().id;
-  const [user, setUser] = useState({});
   const [toggleCode, setToggleCode] = useState(false);
   const [toggleDescription, setToggleDescription] = useState(false);
 

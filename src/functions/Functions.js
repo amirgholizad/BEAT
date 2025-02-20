@@ -1,5 +1,12 @@
 import axios from "axios";
 
+function convertDate(created_at) {
+  const isoString = created_at;
+  const dateObj = new Date(isoString);
+  const simpleDate = dateObj.toLocaleDateString("en-CA");
+  return simpleDate;
+}
+
 async function fetchIndicatorById(id, baseUrl) {
   try {
     const res = await axios.get(`${baseUrl}/indicator/${id}`);
@@ -89,6 +96,15 @@ async function fetchAllBlogs(baseUrl) {
   }
 }
 
+async function fetchBlogById(blogId, baseUrl) {
+  try {
+    const res = await axios.get(`${baseUrl}/blog/${blogId}`);
+    return res.data[0];
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export {
   fetchIndicators,
   fetchIndicatorById,
@@ -100,4 +116,6 @@ export {
   createBlog,
   editBlog,
   fetchAllBlogs,
+  fetchBlogById,
+  convertDate,
 };
