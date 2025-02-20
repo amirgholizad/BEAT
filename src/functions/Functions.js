@@ -80,6 +80,15 @@ async function editBlog(blog, id, baseUrl) {
   }
 }
 
+async function fetchAllBlogs(baseUrl) {
+  try {
+    const res = await axios.get(`${baseUrl}/blog`);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export {
   fetchIndicators,
   fetchIndicatorById,
@@ -90,4 +99,5 @@ export {
   createIndicator,
   createBlog,
   editBlog,
+  fetchAllBlogs,
 };

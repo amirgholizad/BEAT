@@ -20,6 +20,7 @@
     gap: $gap-default;
     max-height: 100%;
     width: 40vw;
+    border-right: $divider;
   }
   &-right {
     display: flex;
@@ -29,7 +30,6 @@
     gap: $gap-default * 4;
     height: 100%;
     width: 40vw;
-    border-left: $divider;
     &__button {
       @include button-cta--green;
       margin-left: 45%;
