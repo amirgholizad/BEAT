@@ -5,12 +5,13 @@ import { useEffect, useState } from "react";
 import { getAllUsers, createBlog, editBlog } from "../../functions/Functions";
 import { useNavigate } from "react-router-dom";
 import alertIcon from "../../assets/icons/svg/alertIcon.svg";
-import sha256 from "crypto-js/sha256";
+import AES from "crypto-js/aes";
 
 function BlogForm({ mode, initialData }) {
   const [users, setUsers] = useState([]);
   const navigation = useNavigate();
   const baseUrl = import.meta.env.VITE_APP_URL;
+  const secretKey = import.meta.env.VITE_SECRET_KEY;
 
   useEffect(() => {
     const getUsers = async () => {
@@ -123,9 +124,13 @@ function BlogForm({ mode, initialData }) {
     return isValid;
   };
 
-  const photoName = sha256(
-    formData.title + formData.user + Date.now()
+  let photoName = AES.encrypt(
+    `${formData.title}${formData.user}`,
+    secretKey
   ).toString();
+
+  photoName = photoName.replace(/[^A-Za-z0-9]/g, "").toUpperCase();
+  photoName = photoName.substring(0, 10);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -220,9 +225,6 @@ function BlogForm({ mode, initialData }) {
         {inputInvalid.links && (
           <ErrorMessage message={validationMessages.links} />
         )}
-        <Uploader photoName={photoName} />
-      </section>
-      <section className="create-blog-form-right">
         <Input
           name="content"
           labelName="Content"
@@ -235,9 +237,13 @@ function BlogForm({ mode, initialData }) {
         {inputInvalid.content && (
           <ErrorMessage message={validationMessages.content} />
         )}
-        <button className="create-blog-form-right__button" type="submit">
+      </section>
+      <section className="create-blog-form-right">
+        <Uploader photoName={photoName} />
+
+        {/* <button className="create-blog-form-right__button" type="submit">
           Submit
-        </button>
+        </button> */}
       </section>
     </form>
   );
