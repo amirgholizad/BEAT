@@ -1,5 +1,12 @@
 import axios from "axios";
 
+function convertDate(created_at) {
+  const isoString = created_at;
+  const dateObj = new Date(isoString);
+  const simpleDate = dateObj.toLocaleDateString("en-CA");
+  return simpleDate;
+}
+
 async function fetchIndicatorById(id, baseUrl) {
   try {
     const res = await axios.get(`${baseUrl}/indicator/${id}`);
@@ -62,6 +69,42 @@ async function createIndicator(indicator, baseUrl) {
   }
 }
 
+async function createBlog(blog, baseUrl) {
+  try {
+    await axios.post(`${baseUrl}/blog`, blog);
+    return "Success";
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function editBlog(blog, id, baseUrl) {
+  try {
+    await axios.put(`${baseUrl}/blog/${id}`, blog);
+    return "Success";
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function fetchAllBlogs(baseUrl) {
+  try {
+    const res = await axios.get(`${baseUrl}/blog`);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function fetchBlogById(blogId, baseUrl) {
+  try {
+    const res = await axios.get(`${baseUrl}/blog/${blogId}`);
+    return res.data[0];
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export {
   fetchIndicators,
   fetchIndicatorById,
@@ -70,4 +113,9 @@ export {
   fetchIndicatorWithUser,
   editIndicator,
   createIndicator,
+  createBlog,
+  editBlog,
+  fetchAllBlogs,
+  fetchBlogById,
+  convertDate,
 };

@@ -17,6 +17,9 @@ import "./App.scss";
 import IndicatorMarketplace from "./pages/IndicatorMarketplace/IndicatorMarketplace";
 import IndicatorDetails from "./pages/IndicatorDetails/IndicatorDetails";
 import CreateIndicator from "./pages/CreateIndicator/CreateIndicator";
+import BlogPage from "./pages/BlogPage/BlogPage";
+import CreateBlog from "./pages/CreateBlog/CreateBlog";
+import BlogPost from "./pages/BlogPost/BlogPost";
 
 function App() {
   let accessToken = localStorage.getItem("token");
@@ -98,6 +101,9 @@ function App() {
           />
           <Route path="/indicator/:id" element={<IndicatorDetails />} />
           <Route path="/indicator/create" element={<CreateIndicator />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/create" element={<CreateBlog />} />
+          <Route path="/blog/:id" element={<BlogPost />} />
         </Routes>
         <Footer />
       </Router>

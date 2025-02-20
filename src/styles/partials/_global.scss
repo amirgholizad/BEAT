@@ -10,9 +10,12 @@
 }
 
 body {
-  background-color: $bg-grey;
+  display: flex;
+  flex-direction: column;
+  background-color: $primary-black;
   font-family: $font-base;
   color: $primary-black;
+  height: 100%;
 }
 
 input,
