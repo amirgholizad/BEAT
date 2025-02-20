@@ -48,7 +48,7 @@ function Uploader({ photoName }) {
         />
       )}
       <button className="upload-button" onClick={handleUpload}>
-        Upload
+        Submit
       </button>
     </div>
   );
