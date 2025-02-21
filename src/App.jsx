@@ -20,6 +20,7 @@ import CreateIndicator from "./pages/CreateIndicator/CreateIndicator";
 import BlogPage from "./pages/BlogPage/BlogPage";
 import CreateBlog from "./pages/CreateBlog/CreateBlog";
 import BlogPost from "./pages/BlogPost/BlogPost";
+import Chart from "./pages/Chart/Chart";
 
 function App() {
   let accessToken = localStorage.getItem("token");
@@ -104,6 +105,7 @@ function App() {
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/create" element={<CreateBlog />} />
           <Route path="/blog/:id" element={<BlogPost />} />
+          <Route path="/chart" element={<Chart />} />
         </Routes>
         <Footer />
       </Router>
