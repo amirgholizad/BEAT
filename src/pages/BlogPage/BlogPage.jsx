@@ -1,6 +1,7 @@
 import BlogItem from "../../components/BlogItem/BlogItem";
 import "./BlogPage.scss";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { fetchAllBlogs } from "../../functions/Functions";
 
 function Blog() {
@@ -17,7 +18,14 @@ function Blog() {
 
   return (
     <main className="blog-main">
-      <h1 className="blog-main__headline">Blog</h1>
+      <div className="blog-main__headline">
+        <h1 className="blog-main__headline__title">Blog</h1>
+        <Link to="/blog/create">
+          <button className="blog-main__headline__button">
+            Start a New Blog
+          </button>
+        </Link>
+      </div>
       <section className="blog-container">
         {blogs.map((blog) => (
           <BlogItem key={blog.id} blog={blog} />
