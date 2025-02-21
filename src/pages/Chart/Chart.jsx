@@ -1,43 +1,35 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 
-const chart = () => {
-  const [price, setPrice] = useState("Loading...");
-  const [error, setError] = useState(null);
+const WebSocketComponent = () => {
+  const [message, setMessage] = useState("");
+  const socket = io("ws://localhost:3001"); // Use 'ws://' if not using socket.io
 
   useEffect(() => {
-    // Axios request to fetch initial data from the backend API
-    axios;
-    //   .get("/api/price")
-    //   .then((response) => {
-    //     console.log(response.data);
-    //   })
-    //   .catch((err) => {
-    //     setError("Error fetching initial data.");
-    //     console.error(err);
-    //   });
-
-    // Connect to Socket.IO for live updates
-    const socket = io(); // Automatically connects to the backend server (localhost:3000)
-
-    socket.on("priceUpdate", (data) => {
-      setPrice(`$${data.price}`);
-      console.log(`Updated Price: $${data.price}`);
+    // On connection
+    socket.on("connect", () => {
+      console.log("Connected to WebSocket");
+      socket.emit("message", "Hello from React!");
     });
 
-    // Clean up the socket connection when the component unmounts
-    // return () => {
-    //   socket.disconnect();
-    // };
-  }, []);
+    // Listen for messages
+    socket.on("priceUpdate", (data) => {
+      //   console.log("Message from server:", data);
+      setMessage(data);
+    });
+
+    // Handle disconnection
+    socket.on("disconnect", () => {
+      console.log("WebSocket disconnected");
+    });
+  }, [socket]);
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <h1>BTC-USD Live Price</h1>
-      {error ? <p>{error}</p> : <p>{price}</p>}
+    <div>
+      <h2>WebSocket Message:</h2>
+      <p>{message.price}</p>
     </div>
   );
 };
 
-export default chart;
+export default WebSocketComponent;
