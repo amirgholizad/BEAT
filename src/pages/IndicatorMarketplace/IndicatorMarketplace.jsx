@@ -1,8 +1,8 @@
 import "./IndicatorMarketplace.scss";
-import axios from "axios";
 import sort_icon from "../../assets/icons/SVG/sort_icon.svg";
 import IndicatorItem from "../../components/IndicatorItem/IndicatorItem";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { fetchIndicators } from "../../functions/Functions";
 function IndicatorMarketplace() {
   const [indicators, setIndicators] = useState([]);
@@ -22,7 +22,17 @@ function IndicatorMarketplace() {
   return (
     <main className="marketplace-main">
       <section className="indicator__list">
-        <h1 className="indicator__list__headline">Indicator Marketplace</h1>
+        <div className="indicator__list__headline">
+          <h1 className="indicator__list__headline__title">
+            Indicator Marketplace
+          </h1>
+
+          <Link to="/indicator/create">
+            <button className="indicator__list__headline__button">
+              Create New Indicator
+            </button>
+          </Link>
+        </div>
 
         <div className="indicator__list__filters">
           <h4>

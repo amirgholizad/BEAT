@@ -18,13 +18,33 @@
   width: 100%;
 
   &__headline {
-    color: $primary-white;
-    text-align: center;
-    font-size: $h2-font-size;
-    font-weight: $font-weight-semibold;
-    line-height: $h2-line-height;
-    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: $gap-default;
     padding: $padding-default 0;
+    background-color: $primary-black;
+    color: $primary-white;
+    width: 100%;
+    &__title {
+      color: $primary-white;
+      text-align: center;
+      font-size: $h2-font-size;
+      font-weight: $font-weight-semibold;
+      line-height: $h2-line-height;
+      text-align: left;
+      padding: $padding-default 0;
+    }
+    &__button {
+      @include button-cta--green;
+      color: $primary-white;
+      font-size: $p-font-medium;
+      font-weight: $font-weight-semibold;
+      line-height: $p-medium-line-height;
+      padding: $padding-default * 0.5 $padding-default;
+      border-radius: $border-radius-default;
+      font-style: none;
+    }
   }
   &__filters {
     display: flex;
