@@ -11,10 +11,10 @@ const WebSocket = () => {
 
   useEffect(() => {
     // On connection
-    socket.on("connect", () => {
-      console.log("Connected to WebSocket");
-      socket.emit("message", "Hello from React!");
-    });
+    // socket.on("connect", () => {
+    //   console.log("Connected to WebSocket");
+    //   socket.emit("message", "Hello from React!");
+    // });
 
     // Listen for messages
     socket.on("priceUpdate", (data) => {
@@ -27,10 +27,10 @@ const WebSocket = () => {
         setSide("sell");
       }
     });
-    // Handle disconnection
-    socket.on("disconnect", () => {
-      console.log("WebSocket disconnected");
-    });
+    // // Handle disconnection
+    // socket.on("disconnect", () => {
+    //   console.log("WebSocket disconnected");
+    // });
   }, [socket]);
 
   return (
