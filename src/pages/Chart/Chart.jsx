@@ -1,35 +1,32 @@
-import { useEffect, useState } from "react";
-import { io } from "socket.io-client";
+import { use, useEffect } from "react";
+import axios from "axios";
+import "./Chart.scss";
+import WebSocket from "../../components/WebSocket/WebSocket";
 
-const WebSocketComponent = () => {
-  const [message, setMessage] = useState("");
-  const socket = io("ws://localhost:3001"); // Use 'ws://' if not using socket.io
-
-  useEffect(() => {
-    // On connection
-    socket.on("connect", () => {
-      console.log("Connected to WebSocket");
-      socket.emit("message", "Hello from React!");
-    });
-
-    // Listen for messages
-    socket.on("priceUpdate", (data) => {
-      //   console.log("Message from server:", data);
-      setMessage(data);
-    });
-
-    // Handle disconnection
-    socket.on("disconnect", () => {
-      console.log("WebSocket disconnected");
-    });
-  }, [socket]);
+function Chart() {
+  const ticker = "BTC-USD";
+  const baseUrl = import.meta.env.VITE_APP_URL;
+  async () => {
+    try {
+      await axios.post(`${baseUrl}/ticker`, { ticker: ticker });
+    } catch (error) {
+      console.error("Failed to fetch ticker:", error);
+    }
+  };
 
   return (
-    <div>
-      <h2>WebSocket Message:</h2>
-      <p>{message.price}</p>
-    </div>
+    <main className="chart-main">
+      <section className="chart-and-trades">
+        <div className="chart">
+          <h2 className="chart__title">Chart</h2>
+        </div>
+        <div className="trades">
+          <h2 className="trades__title">Trades</h2>
+          <WebSocket />
+        </div>
+      </section>
+    </main>
   );
-};
+}
 
-export default WebSocketComponent;
+export default Chart;

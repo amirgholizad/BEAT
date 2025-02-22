@@ -1,0 +1,25 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/mixins" as *;
+
+.trades {
+  &__websocket {
+    &__price {
+      font-size: $h1-font-size;
+      font-weight: $font-weight-semibold;
+      line-height: $h1-line-height;
+      padding: $padding-default 0;
+      &--buy {
+        color: $secondary-green;
+      }
+      &--sell {
+        color: $primary-red;
+      }
+    }
+    &__side {
+      font-size: $p-font-medium;
+      font-weight: $font-weight-default;
+      line-height: $p-medium-line-height;
+    }
+  }
+}
