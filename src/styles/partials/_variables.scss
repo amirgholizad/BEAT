@@ -8,7 +8,8 @@ $mobile-breakpoint: 20rem;
 
 // colors
 $primary-white: #fafafa;
-$primary-black: #333333;
+// $primary-black: #1a1a1a;
+$primary-black: #161924;
 $secondary-slate: #5c667e;
 $secondary-cloud: #bdc5d5;
 $market-black: #161924;
@@ -17,6 +18,14 @@ $bg-grey: #f7f8f9;
 $secondary-green: #158463;
 $secondary-red: #c94515;
 $primary-red: #9a0100;
+$python-tag-bg: #93c5fd;
+$python-tag-color: #1e3a8a;
+$javascript-tag-bg: #fff7d6;
+$javascript-tag-color: #f59e0b;
+$free-tag-bg: #a7f3d0;
+$free-tag-color: #059669;
+$premium-tag-bg: #fde68a;
+$premium-tag-color: #b45309;
 
 //typography
 $logo-font-size: 64px;
@@ -81,5 +90,8 @@ $cta-height-mobile: 2.25rem;
 $cta-height-td: 2.375rem;
 $icon-size: 36px;
 $login-form-background: 200px;
+$grid-size: 1fr;
 
-$divider: 0.0625rem solid $secondary-cloud;
+$divider: 2px solid $secondary-slate;
+
+$tag-size: 80px;

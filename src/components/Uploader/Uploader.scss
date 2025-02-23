@@ -1,0 +1,17 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/mixins" as *;
+
+.uploader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: $primary-black;
+  color: $primary-white;
+  &__button {
+    @include button-cta--green;
+    margin-top: $padding-default;
+    margin-left: 65%;
+  }
+}

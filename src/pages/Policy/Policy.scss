@@ -1,0 +1,36 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/mixins" as *;
+
+.policy-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: $gap-default * 2;
+  background-color: $primary-black;
+  padding: $padding-default * 2;
+
+  .policy-list {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-default * 8;
+    list-style-type: none;
+    padding: 0;
+    padding-top: $padding-default * 2;
+    &-item {
+      color: $primary-white;
+      text-align: left;
+      font-size: $p-font-large;
+      font-weight: $font-weight-default;
+      line-height: $p-large-line-height;
+    }
+    a {
+      color: $secondary-green;
+    }
+  }
+}
+
+.policy-headline {
+  color: $primary-white;
+}

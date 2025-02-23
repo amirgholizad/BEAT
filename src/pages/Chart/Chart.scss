@@ -1,0 +1,42 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/mixins" as *;
+
+.chart-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: $primary-black;
+}
+
+.chart-and-trades {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: $gap-default;
+  width: 100%;
+  padding: $padding-default * 2;
+}
+
+.chart {
+  width: 70%;
+  &__title {
+    color: $primary-white;
+    font-size: $h1-font-size;
+    font-weight: $font-weight-semibold;
+    line-height: $h1-line-height;
+    text-align: left;
+  }
+}
+
+.trades {
+  &__title {
+    color: $primary-white;
+    font-size: $h1-font-size;
+    font-weight: $font-weight-semibold;
+    line-height: $h1-line-height;
+    text-align: left;
+  }
+}

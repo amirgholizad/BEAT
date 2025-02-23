@@ -1,18 +1,29 @@
 @use "../../styles/partials/variables" as *;
-@use "../../styles/partials/global" as *;
 @use "../../styles/partials/mixins" as *;
 
 .footer {
   display: flex;
+  height: 7vh;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
-  margin-bottom: $padding-default;
-  p {
-    text-align: center;
-    color: $primary-black;
-    font-size: $p-font-small;
-    font-weight: $font-weight-default;
-    line-height: $p-small-line-height;
+  text-align: center;
+  font-family: $font-base;
+  font-size: $p-font-medium;
+  line-height: $p-medium-line-height;
+  font-weight: $font-weight-default;
+  color: $secondary-slate;
+  @include tablet {
+    font-size: $p-font-medium-td;
+    line-height: $p-medium-line-height-td;
+    height: 7vh;
+    align-items: flex-end;
+    padding-bottom: $padding-margin-default * 4;
+  }
+  @include desktop {
+    font-size: $p-font-medium-td;
+    line-height: $p-medium-line-height-td;
+    height: 7vh;
+    align-items: flex-end;
+    padding-bottom: $padding-margin-default * 4;
   }
 }

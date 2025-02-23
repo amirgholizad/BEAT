@@ -7,8 +7,9 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 $padding-default * 2;
-  background-color: $market-black;
+  background-color: $primary-black;
   color: $primary-white;
+  border-bottom: $divider;
   &__logo {
     color: $primary-white;
     text-align: center;
