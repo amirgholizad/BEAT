@@ -105,6 +105,31 @@ async function fetchBlogById(blogId, baseUrl) {
   }
 }
 
+async function fetchCandles(baseUrl, product_id, granularity, start, end) {
+  const params = {
+    product_id: product_id,
+    granularity: granularity,
+    start: start,
+    end: end,
+  };
+  const config = {
+    method: "get",
+    maxBodyLength: Infinity,
+    url: `${baseUrl}/price`,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    params: params,
+  };
+
+  try {
+    const response = await axios.request(config);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 export {
   fetchIndicators,
   fetchIndicatorById,
@@ -118,4 +143,5 @@ export {
   fetchAllBlogs,
   fetchBlogById,
   convertDate,
+  fetchCandles,
 };

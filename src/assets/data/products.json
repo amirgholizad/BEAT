@@ -1,17 +1,5 @@
 [
   {
-    "id": 1,
-    "name": "interactive-chart",
-    "title": "Interactive Chart",
-    "description": "An interactive chart for monitoring financial assests."
-  },
-  {
-    "id": 2,
-    "name": "portfolio",
-    "title": "Portfolio",
-    "description": "Create, edit, and monitor your financial assests."
-  },
-  {
     "id": 3,
     "name": "indicator-marketplace",
     "title": "Indicator Marketplace",

@@ -1,0 +1,10 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/mixins" as *;
+
+.candle {
+  font-size: $h1-font-size;
+  font-weight: $font-weight-semibold;
+  line-height: $h1-line-height;
+  color: $primary-white;
+}
