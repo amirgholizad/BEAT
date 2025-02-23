@@ -4,33 +4,45 @@ import "./WebSocket.scss";
 
 const WebSocket = () => {
   const [message, setMessage] = useState("");
+  const [canldeTime, setCandleTime] = useState("");
+  const [open, setOpen] = useState("");
+  const [high, setHigh] = useState("");
+  const [low, setLow] = useState("");
+  const [close, setClose] = useState("");
+  const [volume, setVolume] = useState("");
+  const [isFinal, setIsFinal] = useState("");
   const [side, setSide] = useState("");
-  const [price, setPrice] = useState("");
 
-  const socket = io("ws://localhost:3001"); // Use 'ws://' if not using socket.io
+  const wsUrl = import.meta.env.VITE_WS_URL;
+  const socket = io(wsUrl);
 
   useEffect(() => {
     // On connection
-    // socket.on("connect", () => {
-    //   console.log("Connected to WebSocket");
-    //   socket.emit("message", "Hello from React!");
-    // });
+    socket.on("connect", () => {
+      console.log("Connected to WebSocket");
+      socket.emit("message", "Hello from React!");
+    });
 
     // Listen for messages
-    socket.on("priceUpdate", (data) => {
-      //   console.log("Message from server:", data);
+    socket.on("candlestickUpdate", (data) => {
       setMessage(data);
-      setPrice(data.parsedData.price);
-      if (data.parsedData.side === "buy") {
+      setCandleTime(data.time);
+      setOpen(data.open);
+      setHigh(data.high);
+      setLow(data.low);
+      setClose(data.close);
+      setVolume(data.volume);
+      setIsFinal(data.isFinal);
+      if (data.close < data.open) {
         setSide("buy");
       } else {
         setSide("sell");
       }
     });
-    // // Handle disconnection
-    // socket.on("disconnect", () => {
-    //   console.log("WebSocket disconnected");
-    // });
+    // Handle disconnection
+    socket.on("disconnect", () => {
+      console.log("WebSocket disconnected");
+    });
   }, [socket]);
 
   return (
@@ -38,10 +50,7 @@ const WebSocket = () => {
       <h3
         className={`trades__websocket__price trades__websocket__price--${side}`}
       >
-        {price}
-        <span
-          className={`trades__websocket__side trades__websocket__price--${side}`}
-        >{` ${side.toUpperCase()}`}</span>
+        {close}
       </h3>
     </div>
   );

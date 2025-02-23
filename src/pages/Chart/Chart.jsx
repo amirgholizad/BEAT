@@ -18,10 +18,10 @@ function Chart() {
   return (
     <main className="chart-main">
       <section className="chart-and-trades">
-        <div className="chart">
+        {/* <div className="chart">
           <h2 className="chart__title">Chart</h2>
           <PriceCandles />
-        </div>
+        </div> */}
         <div className="trades">
           <h2 className="trades__title">Trades</h2>
           <WebSocket />

@@ -16,7 +16,7 @@ const CodeBlock = ({ code, language }) => {
     if ((codeRef.current, languageRef.current)) {
       hljs.highlightElement(codeRef.current);
     }
-  }, [code, language]); // Runs again when `code` updates
+  }, [code, language]);
 
   return (
     <pre>

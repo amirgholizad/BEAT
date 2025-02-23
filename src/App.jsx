@@ -20,79 +20,15 @@ import CreateIndicator from "./pages/CreateIndicator/CreateIndicator";
 import BlogPage from "./pages/BlogPage/BlogPage";
 import CreateBlog from "./pages/CreateBlog/CreateBlog";
 import BlogPost from "./pages/BlogPost/BlogPost";
-import Chart from "./pages/Chart/Chart";
 
 function App() {
-  let accessToken = localStorage.getItem("token");
-  const [authorized, setAuthorized] = useState(false);
-
-  async function isAuthorized(accessToken) {
-    try {
-      const response = await axios.get(
-        `${import.meta.env.VITE_APP_URL}/user/authorized`,
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        }
-      );
-      if (response.status === 200) {
-        setAuthorized(true);
-        return response;
-      } else {
-        setAuthorized(false);
-        return response;
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  useState(() => {
-    if (accessToken) {
-      console.log(isAuthorized(accessToken));
-    }
-  }, []);
-
-  if (accessToken) {
-    setTimeout(() => {
-      localStorage.removeItem("token");
-      window.location.reload();
-      setAuthorized(false);
-      accessToken = null;
-      1;
-    }, 1000 * 60);
-  }
-
   return (
     <>
       <Router>
         <Header />
         <Routes>
-          <Route
-            path="/login"
-            element={
-              !authorized ? (
-                <LoginPage path="login" />
-              ) : (
-                <Navigate replace to="/" />
-              )
-            }
-          />
-          <Route
-            path="/signup"
-            element={
-              !authorized ? (
-                <LoginPage path="signup" />
-              ) : (
-                <Navigate replace to="/" />
-              )
-            }
-          />
-          {/* <Route
-            path="/"
-            element={authorized ? <Home /> : <Navigate replace to="/login" />}
-          /> */}
+          <Route path="/login" element={<LoginPage path="login" />} />
+          <Route path="/signup" element={<LoginPage path="signup" />} />
           <Route path="/" element={<Home />} />
           <Route path="/policy" element={<Policy />} />
           <Route path="/docs" element={<Docs />} />
@@ -105,7 +41,6 @@ function App() {
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/create" element={<CreateBlog />} />
           <Route path="/blog/:id" element={<BlogPost />} />
-          <Route path="/chart" element={<Chart />} />
         </Routes>
         <Footer />
       </Router>
