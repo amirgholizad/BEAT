@@ -5,7 +5,7 @@ import {
   getAllUsers,
   createIndicator,
   editIndicator,
-} from "../../functions/Functions";
+} from "../../scripts/functions";
 import { useNavigate } from "react-router-dom";
 import alertIcon from "../../assets/icons/svg/alertIcon.svg";
 

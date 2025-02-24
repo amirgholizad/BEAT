@@ -127,14 +127,17 @@ function LoginPage({ path }) {
     e.preventDefault();
 
     if (validateForm()) {
+      const user_name = formData.userName;
+      const email = formData.email;
+      const password = CryptoJS.AES.encrypt(
+        formData.password,
+        SECRET_KEY
+      ).toString();
       try {
         const response = await axios.post(`${BASE_URL}/signup`, {
-          user_name: formData.userName,
-          email: formData.email,
-          password: CryptoJS.AES.encrypt(
-            formData.password,
-            SECRET_KEY
-          ).toString(),
+          user_name: user_name,
+          email: email,
+          password: password,
         });
         if (response.status === 200) {
           setTimeout(() => {}, 3000);
@@ -143,7 +146,9 @@ function LoginPage({ path }) {
             email: "",
             password: "",
           });
-          alert("Account created successfully!");
+          alert(
+            "Account created successfully!\nCheck your email to verify your account."
+          );
           navigate("/login");
         }
       } catch (error) {
