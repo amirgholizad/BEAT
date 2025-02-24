@@ -15,10 +15,7 @@ const SECRET_KEY = import.meta.env.VITE_SECRET_KEY;
 
 function LoginPage({ path }) {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
   const [alluserData, setAllUserData] = useState([]);
-  const [password, setPassword] = useState("");
-  const [userName, setUserName] = useState("");
   const [formData, setFormData] = useState({
     userName: "",
     email: "",
@@ -35,8 +32,6 @@ function LoginPage({ path }) {
     email: "",
     password: "",
   });
-
-  const [showSuccess, setShowSuccess] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -132,28 +127,23 @@ function LoginPage({ path }) {
     e.preventDefault();
 
     if (validateForm()) {
-      setUserName(formData.userName);
-      setEmail(formData.email);
-      setPassword(
-        CryptoJS.AES.encrypt(formData.password, SECRET_KEY).toString()
-      );
       try {
-        console.log(userName, email, password);
         const response = await axios.post(`${BASE_URL}/signup`, {
-          user_name: userName,
-          email: email,
-          password: password,
+          user_name: formData.userName,
+          email: formData.email,
+          password: CryptoJS.AES.encrypt(
+            formData.password,
+            SECRET_KEY
+          ).toString(),
         });
         if (response.status === 200) {
-          setShowSuccess(true);
-          setTimeout(() => {
-            setShowSuccess(false);
-          }, 3000);
+          setTimeout(() => {}, 3000);
           setFormData({
             userName: "",
             email: "",
             password: "",
           });
+          alert("Account created successfully!");
           navigate("/login");
         }
       } catch (error) {
@@ -177,16 +167,13 @@ function LoginPage({ path }) {
     if (validateForm()) {
       try {
         const response = await axios.post(`${BASE_URL}/login`, {
-          user_name: userName,
-          email: email,
-          password: password,
+          user_name: formData.userName,
+          email: formData.email,
+          password: formData.password,
         });
         if (response.status === 200) {
           localStorage.setItem("token", response.data.token);
-          setShowSuccess(true);
-          setTimeout(() => {
-            setShowSuccess(false);
-          }, 3000);
+          setTimeout(() => {}, 3000);
           setFormData({
             userName: "",
             email: "",
