@@ -8,6 +8,7 @@ import CryptoJS from "crypto-js";
 import userIcon from "../../assets/icons/svg/user.svg";
 import passwordIcon from "../../assets/icons/svg/password.svg";
 import alertIcon from "../../assets/icons/svg/alertIcon.svg";
+import emailIcon from "../../assets/icons/svg/email.svg";
 
 const BASE_URL = import.meta.env.VITE_APP_URL;
 const SECRET_KEY = import.meta.env.VITE_SECRET_KEY;
@@ -17,16 +18,20 @@ function LoginPage({ path }) {
   const [email, setEmail] = useState("");
   const [alluserData, setAllUserData] = useState([]);
   const [password, setPassword] = useState("");
+  const [userName, setUserName] = useState("");
   const [formData, setFormData] = useState({
+    userName: "",
     email: "",
     password: "",
   });
   const [inputInvalid, setInputInvalid] = useState({
+    userName: false,
     email: false,
     password: false,
   });
 
   const [validationMessages, setValidationMessages] = useState({
+    userName: "",
     email: "",
     password: "",
   });
@@ -65,11 +70,13 @@ function LoginPage({ path }) {
   const validateForm = () => {
     let isValid = true;
     const newInputInvalid = {
+      userName: false,
       email: false,
       password: false,
     };
 
     const newValidationMessages = {
+      userName: "",
       email: "",
       password: "",
     };
@@ -101,6 +108,21 @@ function LoginPage({ path }) {
       isValid = false;
     }
 
+    if (!formData.userName) {
+      newInputInvalid.userName = true;
+      newValidationMessages.userName = "Username is required";
+      isValid = false;
+    } else if (
+      alluserData.find(
+        (alluserData) => alluserData.user_name === formData.userName
+      ) &&
+      path === "signup"
+    ) {
+      newInputInvalid.userName = true;
+      newValidationMessages.userName = "Username already exists";
+      isValid = false;
+    }
+
     setInputInvalid(newInputInvalid);
     setValidationMessages(newValidationMessages);
     return isValid;
@@ -108,12 +130,17 @@ function LoginPage({ path }) {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-    setEmail(formData.email);
-    setPassword(CryptoJS.AES.encrypt(formData.password, SECRET_KEY).toString());
+
     if (validateForm()) {
+      setUserName(formData.userName);
+      setEmail(formData.email);
+      setPassword(
+        CryptoJS.AES.encrypt(formData.password, SECRET_KEY).toString()
+      );
       try {
-        console.log(email, password);
-        const response = await axios.post(`${BASE_URL}/${path}`, {
+        console.log(userName, email, password);
+        const response = await axios.post(`${BASE_URL}/signup`, {
+          user_name: userName,
           email: email,
           password: password,
         });
@@ -123,6 +150,7 @@ function LoginPage({ path }) {
             setShowSuccess(false);
           }, 3000);
           setFormData({
+            userName: "",
             email: "",
             password: "",
           });
@@ -143,11 +171,13 @@ function LoginPage({ path }) {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setUserName(formData.userName);
     setEmail(formData.email);
     setPassword(formData.password);
     if (validateForm()) {
       try {
         const response = await axios.post(`${BASE_URL}/login`, {
+          user_name: userName,
           email: email,
           password: password,
         });
@@ -158,6 +188,7 @@ function LoginPage({ path }) {
             setShowSuccess(false);
           }, 3000);
           setFormData({
+            userName: "",
             email: "",
             password: "",
           });
@@ -182,6 +213,25 @@ function LoginPage({ path }) {
         >
           <div className="form-group login-form-group">
             <img src={userIcon} alt="user icon" />
+            <Input
+              name="userName"
+              type="text"
+              value={formData.userName}
+              className={inputInvalid.userName ? "input--invalid" : ""}
+              id="userName"
+              placeholderText={
+                inputInvalid.userName
+                  ? validationMessages.userName
+                  : "Enter username"
+              }
+              onChange={handleChange}
+            />
+          </div>
+          {inputInvalid.userName && (
+            <ErrorMessage message={validationMessages.userName} />
+          )}
+          <div className="form-group login-form-group">
+            <img src={emailIcon} alt="email icon" />
             <Input
               name="email"
               type="text"
