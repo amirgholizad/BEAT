@@ -5,11 +5,12 @@ import {
   getAllUsers,
   createIndicator,
   editIndicator,
-} from "../../functions/Functions";
+} from "../../scripts/functions";
 import { useNavigate } from "react-router-dom";
 import alertIcon from "../../assets/icons/svg/alertIcon.svg";
 
 function IndicatorForm({ mode, initialData }) {
+  const author = sessionStorage.getItem("user");
   const [users, setUsers] = useState([]);
   const navigation = useNavigate();
   const baseUrl = import.meta.env.VITE_APP_URL;
@@ -205,7 +206,7 @@ function IndicatorForm({ mode, initialData }) {
           name="user"
           labelName="User"
           type="dropdown"
-          options={users}
+          options={[author]}
           onChange={handleChange}
           className="create-indicator-form__input"
           placeholderText={"Select a user"}

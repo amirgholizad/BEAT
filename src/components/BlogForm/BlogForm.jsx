@@ -2,12 +2,13 @@ import "./BlogForm.scss";
 import Input from "../../components/Input/Input";
 import Uploader from "../../components/Uploader/Uploader";
 import { useEffect, useState } from "react";
-import { getAllUsers, createBlog, editBlog } from "../../functions/Functions";
+import { getAllUsers, createBlog, editBlog } from "../../scripts/functions";
 import { useNavigate } from "react-router-dom";
 import alertIcon from "../../assets/icons/svg/alertIcon.svg";
 import AES from "crypto-js/aes";
 
 function BlogForm({ mode, initialData }) {
+  const author = sessionStorage.getItem("user");
   const [users, setUsers] = useState([]);
   const navigation = useNavigate();
   const baseUrl = import.meta.env.VITE_APP_URL;
@@ -203,7 +204,7 @@ function BlogForm({ mode, initialData }) {
           name="user"
           labelName="User"
           type="dropdown"
-          options={users}
+          options={[author]}
           onChange={handleChange}
           className="create-blog-form__input"
           placeholderText={"Select a user"}

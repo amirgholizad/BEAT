@@ -8,30 +8,34 @@ import CryptoJS from "crypto-js";
 import userIcon from "../../assets/icons/svg/user.svg";
 import passwordIcon from "../../assets/icons/svg/password.svg";
 import alertIcon from "../../assets/icons/svg/alertIcon.svg";
+import emailIcon from "../../assets/icons/svg/email.svg";
 
 const BASE_URL = import.meta.env.VITE_APP_URL;
 const SECRET_KEY = import.meta.env.VITE_SECRET_KEY;
 
-function LoginPage({ path }) {
+function LoginPage({ path, setToken, setUser }) {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
+  const authorized = sessionStorage.getItem("token");
+  if (authorized) {
+    navigate("/");
+  }
   const [alluserData, setAllUserData] = useState([]);
-  const [password, setPassword] = useState("");
   const [formData, setFormData] = useState({
+    userName: "",
     email: "",
     password: "",
   });
   const [inputInvalid, setInputInvalid] = useState({
+    userName: false,
     email: false,
     password: false,
   });
 
   const [validationMessages, setValidationMessages] = useState({
+    userName: "",
     email: "",
     password: "",
   });
-
-  const [showSuccess, setShowSuccess] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -65,11 +69,13 @@ function LoginPage({ path }) {
   const validateForm = () => {
     let isValid = true;
     const newInputInvalid = {
+      userName: false,
       email: false,
       password: false,
     };
 
     const newValidationMessages = {
+      userName: "",
       email: "",
       password: "",
     };
@@ -101,6 +107,21 @@ function LoginPage({ path }) {
       isValid = false;
     }
 
+    if (!formData.userName) {
+      newInputInvalid.userName = true;
+      newValidationMessages.userName = "Username is required";
+      isValid = false;
+    } else if (
+      alluserData.find(
+        (alluserData) => alluserData.user_name === formData.userName
+      ) &&
+      path === "signup"
+    ) {
+      newInputInvalid.userName = true;
+      newValidationMessages.userName = "Username already exists";
+      isValid = false;
+    }
+
     setInputInvalid(newInputInvalid);
     setValidationMessages(newValidationMessages);
     return isValid;
@@ -108,24 +129,30 @@ function LoginPage({ path }) {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-    setEmail(formData.email);
-    setPassword(CryptoJS.AES.encrypt(formData.password, SECRET_KEY).toString());
+
     if (validateForm()) {
+      const user_name = formData.userName;
+      const email = formData.email;
+      const password = CryptoJS.AES.encrypt(
+        formData.password,
+        SECRET_KEY
+      ).toString();
       try {
-        console.log(email, password);
-        const response = await axios.post(`${BASE_URL}/${path}`, {
+        const response = await axios.post(`${BASE_URL}/signup`, {
+          user_name: user_name,
           email: email,
           password: password,
         });
         if (response.status === 200) {
-          setShowSuccess(true);
-          setTimeout(() => {
-            setShowSuccess(false);
-          }, 3000);
+          setTimeout(() => {}, 3000);
           setFormData({
+            userName: "",
             email: "",
             password: "",
           });
+          alert(
+            "Account created successfully!\nCheck your email to verify your account."
+          );
           navigate("/login");
         }
       } catch (error) {
@@ -143,25 +170,38 @@ function LoginPage({ path }) {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setEmail(formData.email);
-    setPassword(formData.password);
+
     if (validateForm()) {
+      const user_name = formData.userName;
+      const email = formData.email;
+      const password = CryptoJS.AES.encrypt(
+        formData.password,
+        SECRET_KEY
+      ).toString();
       try {
         const response = await axios.post(`${BASE_URL}/login`, {
+          user_name: user_name,
           email: email,
           password: password,
         });
         if (response.status === 200) {
-          localStorage.setItem("token", response.data.token);
-          setShowSuccess(true);
-          setTimeout(() => {
-            setShowSuccess(false);
-          }, 3000);
+          setTimeout(() => {}, 3000);
           setFormData({
+            userName: "",
             email: "",
             password: "",
           });
-          window.location.reload();
+          setToken(response.data.session.access_token);
+          setUser(response.data.user.user_metadata.user_name);
+          sessionStorage.setItem("token", response.data.session.access_token);
+          sessionStorage.setItem(
+            "user",
+            response.data.user.user_metadata.user_name
+          );
+          alert(
+            "Login successful!\nYou will be redirected to the homepage shortly."
+          );
+          navigate("/");
         }
       } catch (error) {
         console.error(error);
@@ -182,6 +222,25 @@ function LoginPage({ path }) {
         >
           <div className="form-group login-form-group">
             <img src={userIcon} alt="user icon" />
+            <Input
+              name="userName"
+              type="text"
+              value={formData.userName}
+              className={inputInvalid.userName ? "input--invalid" : ""}
+              id="userName"
+              placeholderText={
+                inputInvalid.userName
+                  ? validationMessages.userName
+                  : "Enter username"
+              }
+              onChange={handleChange}
+            />
+          </div>
+          {inputInvalid.userName && (
+            <ErrorMessage message={validationMessages.userName} />
+          )}
+          <div className="form-group login-form-group">
+            <img src={emailIcon} alt="email icon" />
             <Input
               name="email"
               type="text"

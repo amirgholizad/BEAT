@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { fetchCandles } from "../../functions/Functions";
+import { fetchCandles } from "../../scripts/functions";
 import axios from "axios";
 import "./PriceCandles.scss";
 

@@ -2,7 +2,7 @@ import BlogItem from "../../components/BlogItem/BlogItem";
 import "./BlogPage.scss";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { fetchAllBlogs } from "../../functions/Functions";
+import { fetchAllBlogs } from "../../scripts/functions";
 
 function Blog() {
   const baseUrl = import.meta.env.VITE_APP_URL;
