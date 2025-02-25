@@ -13,8 +13,12 @@ import emailIcon from "../../assets/icons/svg/email.svg";
 const BASE_URL = import.meta.env.VITE_APP_URL;
 const SECRET_KEY = import.meta.env.VITE_SECRET_KEY;
 
-function LoginPage({ path }) {
+function LoginPage({ path, setToken, setUser }) {
   const navigate = useNavigate();
+  const authorized = sessionStorage.getItem("token");
+  if (authorized) {
+    navigate("/");
+  }
   const [alluserData, setAllUserData] = useState([]);
   const [formData, setFormData] = useState({
     userName: "",
@@ -166,25 +170,38 @@ function LoginPage({ path }) {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setUserName(formData.userName);
-    setEmail(formData.email);
-    setPassword(formData.password);
+
     if (validateForm()) {
+      const user_name = formData.userName;
+      const email = formData.email;
+      const password = CryptoJS.AES.encrypt(
+        formData.password,
+        SECRET_KEY
+      ).toString();
       try {
         const response = await axios.post(`${BASE_URL}/login`, {
-          user_name: formData.userName,
-          email: formData.email,
-          password: formData.password,
+          user_name: user_name,
+          email: email,
+          password: password,
         });
         if (response.status === 200) {
-          localStorage.setItem("token", response.data.token);
           setTimeout(() => {}, 3000);
           setFormData({
             userName: "",
             email: "",
             password: "",
           });
-          window.location.reload();
+          setToken(response.data.session.access_token);
+          setUser(response.data.user.user_metadata.user_name);
+          sessionStorage.setItem("token", response.data.session.access_token);
+          sessionStorage.setItem(
+            "user",
+            response.data.user.user_metadata.user_name
+          );
+          alert(
+            "Login successful!\nYou will be redirected to the homepage shortly."
+          );
+          navigate("/");
         }
       } catch (error) {
         console.error(error);
