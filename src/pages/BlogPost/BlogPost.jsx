@@ -1,6 +1,6 @@
 import React from "react";
 import "./BlogPost.scss";
-import { fetchBlogById, convertDate } from "../../functions/Functions";
+import { fetchBlogById, convertDate } from "../../scripts/functions";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";

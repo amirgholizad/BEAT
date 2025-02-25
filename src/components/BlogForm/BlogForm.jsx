@@ -2,7 +2,7 @@ import "./BlogForm.scss";
 import Input from "../../components/Input/Input";
 import Uploader from "../../components/Uploader/Uploader";
 import { useEffect, useState } from "react";
-import { getAllUsers, createBlog, editBlog } from "../../functions/Functions";
+import { getAllUsers, createBlog, editBlog } from "../../scripts/functions";
 import { useNavigate } from "react-router-dom";
 import alertIcon from "../../assets/icons/svg/alertIcon.svg";
 import AES from "crypto-js/aes";

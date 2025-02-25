@@ -3,7 +3,7 @@ import sort_icon from "../../assets/icons/SVG/sort_icon.svg";
 import IndicatorItem from "../../components/IndicatorItem/IndicatorItem";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { fetchIndicators } from "../../functions/Functions";
+import { fetchIndicators } from "../../scripts/functions";
 function IndicatorMarketplace() {
   const [indicators, setIndicators] = useState([]);
   const baseUrl = import.meta.env.VITE_APP_URL;

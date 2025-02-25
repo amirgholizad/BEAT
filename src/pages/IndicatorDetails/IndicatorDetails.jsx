@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { fetchIndicatorWithUser } from "../../functions/Functions";
+import { fetchIndicatorWithUser } from "../../scripts/functions";
 import Tags from "../../components/Tags/Tags";
 import "./IndicatorDetails.scss";
 function IndicatorDetails() {

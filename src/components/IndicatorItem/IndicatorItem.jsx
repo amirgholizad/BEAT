@@ -3,7 +3,7 @@ import chevron_right_icon from "../../assets/icons/SVG/chevron_icon.svg";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Tags from "../Tags/Tags";
-import { getUser } from "../../functions/Functions";
+import { getUser } from "../../scripts/functions";
 function IndicatorItem({ indicator }) {
   const baseUrl = import.meta.env.VITE_APP_URL;
   const [user, setUser] = useState("");
