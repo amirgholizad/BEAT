@@ -56,23 +56,8 @@ function App() {
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/:id" element={<BlogPost />} />
 
-        {/* Protected Routes */}
-        <Route
-          path="/indicator/create"
-          element={
-            <ProtectedRoute token={token}>
-              <CreateIndicator />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/blog/create"
-          element={
-            <ProtectedRoute token={token}>
-              <CreateBlog />
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/indicator/create" element={<CreateIndicator />} />
+        <Route path="/blog/create" element={<CreateBlog />} />
 
         {/* Redirect unknown routes to home */}
         <Route path="*" element={<Navigate to="/" />} />

@@ -206,10 +206,11 @@ function IndicatorForm({ mode, initialData }) {
           name="user"
           labelName="User"
           type="dropdown"
-          options={author}
+          options={[author]}
+          onChange={handleChange}
           className="create-indicator-form__input"
           placeholderText={"Select a user"}
-          value={author}
+          value={formData.user}
         />
         {inputInvalid.user && (
           <ErrorMessage message={validationMessages.user} />
