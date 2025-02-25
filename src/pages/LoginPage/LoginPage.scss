@@ -9,6 +9,9 @@
   align-items: center;
   height: 100vh;
   background-image: url("../../assets/images/background-login-page.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   &-form {
     display: flex;
     flex-direction: column;

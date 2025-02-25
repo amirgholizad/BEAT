@@ -3,7 +3,10 @@ import { useLocation } from "react-router-dom";
 
 function Footer() {
   const location = useLocation();
-  if (location.pathname === "/login" || location.pathname === "/signup") {
+  if (
+    location.pathname.toLocaleLowerCase() === "/login" ||
+    location.pathname.toLocaleLowerCase() === "/signup"
+  ) {
     return null;
   }
   return (
