@@ -1,5 +1,11 @@
 [
   {
+    "id": 1,
+    "name": "interactive-chart",
+    "title": "Interactive Chart",
+    "description": "A charting tool for visualizing financial data."
+  },
+  {
     "id": 3,
     "name": "indicator-marketplace",
     "title": "Indicator Marketplace",

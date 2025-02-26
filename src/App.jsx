@@ -17,8 +17,8 @@ import CreateIndicator from "./pages/CreateIndicator/CreateIndicator";
 import BlogPage from "./pages/BlogPage/BlogPage";
 import CreateBlog from "./pages/CreateBlog/CreateBlog";
 import BlogPost from "./pages/BlogPost/BlogPost";
-import ProtectedRoute from "./pages/ProtectedRoute/ProtectedRoute"; // ⬅️ Import the ProtectedRoute
 import "./App.scss";
+import Chart from "./pages/Chart/Chart";
 
 function App() {
   const [token, setToken] = useState("");
@@ -59,6 +59,7 @@ function App() {
         <Route path="/indicator/create" element={<CreateIndicator />} />
         <Route path="/blog/create" element={<CreateBlog />} />
 
+        <Route path="interactive-chart" element={<Chart />} />
         {/* Redirect unknown routes to home */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>

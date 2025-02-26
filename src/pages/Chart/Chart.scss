@@ -4,39 +4,82 @@
 
 .chart-main {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: flex-start;
   background-color: $primary-black;
 }
 
-.chart-and-trades {
+.price-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: $padding-default * 4;
+  width: 30%;
+  height: 100vh;
+  border-left: $divider;
+
+  &__title {
+    color: $primary-white;
+    font-size: $h1-font-size;
+    font-weight: $font-weight-semibold;
+    line-height: $h1-line-height;
+    margin-bottom: $padding-default;
+  }
+}
+.price-container {
+  padding: $padding-default;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border: 3px solid $secondary-slate;
+  border-radius: $border-radius-default;
+  box-shadow: 3px 3px 3px $secondary-slate;
+  width: 100%;
+}
+
+.chart-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: $padding-default * 4;
+
+  width: 80%;
+  &__title {
+    color: $primary-white;
+    font-size: $h1-font-size;
+    font-weight: $font-weight-semibold;
+    line-height: $h1-line-height;
+    margin-bottom: $padding-default;
+  }
+}
+
+.chart-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: flex-start;
-  gap: $gap-default;
+  align-items: center;
+  gap: $gap-default * 4;
+  border: 3px solid $secondary-slate;
+  border-radius: $border-radius-default;
+  box-shadow: 3px 3px 3px $secondary-slate;
+  overflow: hidden;
   width: 100%;
-  padding: $padding-default * 2;
+  height: 700px;
 }
 
-.chart {
+.tv-lightweight-charts {
+  margin: auto auto;
   width: 70%;
-  &__title {
-    color: $primary-white;
-    font-size: $h1-font-size;
-    font-weight: $font-weight-semibold;
-    line-height: $h1-line-height;
-    text-align: left;
-  }
+  height: 70%;
 }
 
-.trades {
-  &__title {
-    color: $primary-white;
-    font-size: $h1-font-size;
-    font-weight: $font-weight-semibold;
-    line-height: $h1-line-height;
-    text-align: left;
-  }
+.price {
+  font-size: $h2-font-size;
+  font-weight: $font-weight-semibold;
+  line-height: $h2-line-height;
+  color: $primary-white;
 }
