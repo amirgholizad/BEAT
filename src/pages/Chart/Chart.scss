@@ -38,6 +38,67 @@
   border-radius: $border-radius-default;
   box-shadow: 3px 3px 3px $secondary-slate;
   width: 100%;
+  gap: $gap-default * 4;
+  &__latest {
+    font-size: $h1-font-size;
+    font-weight: $font-weight-semibold;
+    line-height: $h1-line-height;
+    &--up {
+      color: $secondary-green;
+    }
+    &--down {
+      color: $primary-red;
+    }
+  }
+  &__ohlc {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: $gap-default * 2;
+    width: 100%;
+    &--price {
+      color: $secondary-slate;
+      font-size: $p-font-medium;
+      font-weight: $font-weight-default;
+      line-height: $p-medium-line-height;
+    }
+  }
+  &__ticker {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    &--symbol {
+      color: $secondary-slate;
+      font-size: $p-font-medium;
+      font-weight: $font-weight-default;
+      line-height: $p-medium-line-height;
+    }
+    &--time {
+      color: $secondary-slate;
+      font-size: $p-font-medium;
+      font-weight: $font-weight-semibold;
+      line-height: $p-medium-line-height;
+    }
+    &--granularity {
+      color: $secondary-slate;
+      font-size: $p-font-medium;
+      font-weight: $font-weight-default;
+      line-height: $p-medium-line-height;
+    }
+  }
+  &__settings {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: $gap-default * 4;
+    width: 100%;
+    margin: $padding-default * 2 0;
+  }
 }
 
 .chart-wrapper {
@@ -82,4 +143,48 @@
   font-weight: $font-weight-semibold;
   line-height: $h2-line-height;
   color: $primary-white;
+}
+
+.label-input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: $gap-default * 2;
+  width: 100%;
+  margin: $padding-default * 2 0;
+
+  &__label {
+    color: $primary-white;
+    font-size: $p-font-medium;
+    font-weight: $font-weight-semibold;
+    line-height: $p-medium-line-height;
+  }
+  &__input {
+    width: 100%;
+    height: $cta-height-td;
+    padding: $padding-default/2;
+    border: 2px solid $secondary-slate;
+    border-radius: $border-radius-default * 2;
+    background-color: $primary-black;
+    color: $primary-white;
+    font-size: $p-font-medium;
+    font-weight: $font-weight-default;
+    line-height: $p-medium-line-height;
+    &::after {
+      color: $secondary-slate;
+      font-size: $p-font-medium;
+    }
+
+    &:focus {
+      border-color: $secondary-slate;
+    }
+
+    &__option {
+      color: $primary-white;
+      font-size: $p-font-medium;
+      font-weight: $font-weight-default;
+      line-height: $p-medium-line-height;
+    }
+  }
 }
