@@ -4,39 +4,187 @@
 
 .chart-main {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: flex-start;
   background-color: $primary-black;
 }
 
-.chart-and-trades {
+.price-wrapper {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: flex-start;
-  gap: $gap-default;
-  width: 100%;
-  padding: $padding-default * 2;
-}
+  padding: $padding-default * 4;
+  width: 30%;
+  height: 100vh;
+  border-left: $divider;
 
-.chart {
-  width: 70%;
   &__title {
     color: $primary-white;
     font-size: $h1-font-size;
     font-weight: $font-weight-semibold;
     line-height: $h1-line-height;
-    text-align: left;
+    margin-bottom: $padding-default;
+  }
+}
+.price-container {
+  padding: $padding-default;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border: 3px solid $secondary-slate;
+  border-radius: $border-radius-default;
+  box-shadow: 3px 3px 3px $secondary-slate;
+  width: 100%;
+  gap: $gap-default * 4;
+  &__latest {
+    font-size: $h1-font-size;
+    font-weight: $font-weight-semibold;
+    line-height: $h1-line-height;
+    &--up {
+      color: $secondary-green;
+    }
+    &--down {
+      color: $primary-red;
+    }
+  }
+  &__ohlc {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: $gap-default * 2;
+    width: 100%;
+    &--price {
+      color: $secondary-slate;
+      font-size: $p-font-medium;
+      font-weight: $font-weight-default;
+      line-height: $p-medium-line-height;
+    }
+  }
+  &__ticker {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    &--symbol {
+      color: $secondary-slate;
+      font-size: $p-font-medium;
+      font-weight: $font-weight-default;
+      line-height: $p-medium-line-height;
+    }
+    &--time {
+      color: $secondary-slate;
+      font-size: $p-font-medium;
+      font-weight: $font-weight-semibold;
+      line-height: $p-medium-line-height;
+    }
+    &--granularity {
+      color: $secondary-slate;
+      font-size: $p-font-medium;
+      font-weight: $font-weight-default;
+      line-height: $p-medium-line-height;
+    }
+  }
+  &__settings {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: $gap-default * 4;
+    width: 100%;
+    margin: $padding-default * 2 0;
   }
 }
 
-.trades {
+.chart-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: $padding-default * 4;
+
+  width: 80%;
   &__title {
     color: $primary-white;
     font-size: $h1-font-size;
     font-weight: $font-weight-semibold;
     line-height: $h1-line-height;
-    text-align: left;
+    margin-bottom: $padding-default;
+  }
+}
+
+.chart-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: $gap-default * 4;
+  border: 3px solid $secondary-slate;
+  border-radius: $border-radius-default;
+  box-shadow: 3px 3px 3px $secondary-slate;
+  overflow: hidden;
+  width: 100%;
+  height: 700px;
+}
+
+.tv-lightweight-charts {
+  margin: auto auto;
+  width: 70%;
+  height: 70%;
+}
+
+.price {
+  font-size: $h2-font-size;
+  font-weight: $font-weight-semibold;
+  line-height: $h2-line-height;
+  color: $primary-white;
+}
+
+.label-input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: $gap-default * 2;
+  width: 100%;
+  margin: $padding-default * 2 0;
+
+  &__label {
+    color: $primary-white;
+    font-size: $p-font-medium;
+    font-weight: $font-weight-semibold;
+    line-height: $p-medium-line-height;
+  }
+  &__input {
+    width: 100%;
+    height: $cta-height-td;
+    padding: $padding-default/2;
+    border: 2px solid $secondary-slate;
+    border-radius: $border-radius-default * 2;
+    background-color: $primary-black;
+    color: $primary-white;
+    font-size: $p-font-medium;
+    font-weight: $font-weight-default;
+    line-height: $p-medium-line-height;
+    &::after {
+      color: $secondary-slate;
+      font-size: $p-font-medium;
+    }
+
+    &:focus {
+      border-color: $secondary-slate;
+    }
+
+    &__option {
+      color: $primary-white;
+      font-size: $p-font-medium;
+      font-weight: $font-weight-default;
+      line-height: $p-medium-line-height;
+    }
   }
 }

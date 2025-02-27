@@ -14,7 +14,10 @@ function Header() {
     navigate("/login");
   };
 
-  if (location.pathname === "/login" || location.pathname === "/signup") {
+  if (
+    location.pathname.toLowerCase() === "/login" ||
+    location.pathname.toLowerCase() === "/signup"
+  ) {
     return null;
   }
   return (

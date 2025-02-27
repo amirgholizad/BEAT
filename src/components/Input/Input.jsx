@@ -49,9 +49,11 @@ const Input = ({
 
   if (type === "dropdown") {
     return (
-      <div className="label-input">
+      <div className={`label-input ${className}-input-container`}>
         <h3 className={`label-input__title ${className}-title`}>{labelName}</h3>
-        <div className={`label-input__input-container ${className}`}>
+        <div
+          className={`label-input__input-container ${className} ${className}-input-form`}
+        >
           <select
             name={name}
             value={value}
